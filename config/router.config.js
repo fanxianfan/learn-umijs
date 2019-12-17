@@ -18,24 +18,24 @@ export default [
       }
     ]
   },
-  // /*应用路由*/
-  // {
-  //   path: '/', //请求路径
-  //   component: '../layouts/BasicLayout', //组件加载路径，相对于src/pages目录
-  //   Routes:['src/authority/Authority'], // 权限路由，umi会通过Routes来渲染此路由
-  //   routes: [ //子组件
-  //     { //流程分页
-  //       path: '/flow',
-  //       component: './Flow/FlowPaging'
-  //     },
-  //     { //404页面
-  //       path: '/404',
-  //       component: './Error/Error404'
-  //     },
-  //     { //403页面
-  //       path: '/403',
-  //       component: './Error/Error403'
-  //     }
-  //   ]
-  // }
+  /*应用路由*/
+  {
+    path: '/', //请求路径
+    component: '../layouts/BasicLayout', //组件加载路径，相对于src/pages目录
+    Routes:['src/authority/Authority'], // 权限路由，umi会通过Routes来渲染此路由
+    routes: [ //子组件
+      { //流程分页
+        path: '/flow',
+        component: './Flow/FlowPaging'
+      },
+      { //404页面
+        path: '/404',
+        component: './Error/Error404'
+      },
+      { //403页面
+        path: '/403',
+        component: './Error/Error403'
+      }
+    ]
+  }
 ]
