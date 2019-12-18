@@ -3,6 +3,16 @@
  * 匹配规则：按照数组顺序并深度遍历匹配
  * */
 export default [
+  /*404页面*/
+  {
+    path: '/404',
+    component: './Error/Error404'
+  },
+  /*403页面*/
+  {
+    path: '/403',
+    component: './Error/Error403'
+  },
   /*用户路由（登录 | 注册）*/
   {
     path: '/user', //请求路径
@@ -27,15 +37,8 @@ export default [
       { //流程分页
         path: '/flow',
         component: './Flow/FlowPaging'
-      },
-      { //404页面
-        path: '/404',
-        component: './Error/Error404'
-      },
-      { //403页面
-        path: '/403',
-        component: './Error/Error403'
       }
     ]
-  }
+  },
+
 ]
