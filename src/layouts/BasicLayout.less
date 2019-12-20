@@ -1,26 +1,52 @@
 
+/*边栏菜单*/
+.basicSideBar {
+  overflow: auto;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+}
 
-
-/*边栏垂直菜单*/
+/*边栏垂直菜单品牌图标*/
 .basicLogo {
   text-align: center;
   margin: 10px;
 }
-
 .basicLogo img {
-  max-height: 50px;
-  max-width: 50px;
+  max-height: 40px;
+  max-width: 40px;
 }
 
 /*主体框*/
 .basicBodyLayout {
   margin-left: 200px;
+  &.toggle {
+    margin-left: 80px;
+  }
 }
 
 /*主体头*/
 .basicBodyHeader {
-  background: #fff;
   padding: 0;
+  margin: 0;
+  height: 8vh;
+  background-color: #ffffff;
+}
+
+/*边栏菜单控制图标*/
+.basicBodyHeaderTrigger {
+  font-size: 22px;
+  padding: 0 6px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.basicBodyHeaderTrigger:hover {
+  color: #1890ff;
+}
+
+/*主体头:菜单*/
+.basicBodyHeaderMenu {
   height: 8vh;
 }
 
@@ -28,12 +54,14 @@
 .basicBodyContent {
   margin: 0;
   overflow: auto;
-  height: 82vh;
+  height: 86vh;
 }
 
 /*主体尾*/
 .basicBodyFooter {
   text-align: center;
+  padding: 0;
   margin: 0;
-  height: 10vh;
+  height: 6vh;
+  line-height: 6vh;
 }

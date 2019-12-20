@@ -36,7 +36,31 @@ export default [
     routes: [ //子组件
       { //流程分页
         path: '/flow',
-        component: './Flow/FlowPaging'
+        name: '业务流程管理',
+        icon: 'pull-request',
+        component: './Flow/FlowPaging',
+        routes: [
+          { //流程编辑
+            path: '/flow/edit',
+            name: '流程修改',
+            component: './Flow/FlowEdit',
+            hidden: true
+          }
+        ]
+      },
+      { //活动分页
+        path: '/activity',
+        name: '业务活动管理',
+        icon: 'inbox',
+        component: './Activity/ActivityPaging',
+        routes: [
+          { //活动编辑
+            path: '/activity/edit',
+            name: '活动编辑',
+            component: './Activity/ActivityEdit',
+            hidden: true
+          }
+        ]
       }
     ]
   },
