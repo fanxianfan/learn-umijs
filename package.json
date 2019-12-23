@@ -8,12 +8,14 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
-    "dva": "^2.4.1",
     "antd": "^3.19.5",
+    "dva": "^2.4.1",
+    "moment": "^2.22.2",
+    "pubsub-js": "^1.5.8",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "moment": "^2.22.2",
-    "xlsx": "^0.15.3"
+    "xlsx": "^0.15.3",
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
