@@ -99,10 +99,10 @@ class VerticalMenu extends Component {
     for (let i = 0; i < VerticalMenu.routesArray.length; i++) {
       const route = VerticalMenu.routesArray[i];
       if (route.path === currentPath) {
-        return route.key;
+        return route;
       }
     }
-    return '';
+    return null;
   };
 
   /**
@@ -207,7 +207,9 @@ class VerticalMenu extends Component {
     return (
       <Menu theme='dark'
             mode='inline'
-            defaultSelectedKeys={this.defaultRoute}
+            defaultSelectedKeys={this.defaultRoute ? this.defaultRoute.key : ''}
+            defaultOpenKeys={[this.defaultRoute ? this.defaultRoute.parent : '']}
+            forceSubMenuRender={true}
             onSelect={this.handleMenuOnSelect}>
         {this.state.menuElements}
       </Menu>
@@ -236,7 +238,7 @@ VerticalMenu.Breadcrumb = class DBreadcrumb extends Component {
   }
 
   iteration = () => {
-    const child = this.itemArray[this.itemArray.length - 1];
+    const child = this.itemArray[0];
     for (let i = 0; i < VerticalMenu.routesArray.length; i++) {
       const route = VerticalMenu.routesArray[i];
       if (route.key === child.parent) {

@@ -3,10 +3,12 @@ import {
   Layout,
   Icon,
   notification,
+  ConfigProvider
 } from 'antd';
 import styles from './BasicLayout.less';
 import favicon from '../../public/favicon.ico';
 import VerticalMenu from "@/components/VerticalMenu";
+import zhCN from 'antd/es/locale/zh_CN';
 
 
 const {Header, Footer, Sider, Content} = Layout;
@@ -36,6 +38,7 @@ class BasicLayout extends Component {
   render() {
     return (
       <>
+        <ConfigProvider locale={zhCN}>
         <Layout>
           {/*垂直边栏*/}
           <Sider
@@ -68,6 +71,7 @@ class BasicLayout extends Component {
             <Footer className={styles.basicBodyFooter}>@2019 create by fxf</Footer>
           </Layout>
         </Layout>
+        </ConfigProvider>
       </>
     );
   }

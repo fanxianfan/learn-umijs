@@ -32,30 +32,33 @@ export default [
   {
     path: '/', //请求路径
     component: '../layouts/BasicLayout', //组件加载路径，相对于src/pages目录
-    Routes:['src/authority/Authority'], // 权限路由，umi会通过Routes来渲染此路由
+    Routes:['src/authorities/Authority'], // 权限路由，umi会通过Routes来渲染此路由
     routes: [ //子组件
-      { //流程分页
-        path: '/flow',
-        name: '业务流程管理',
-        icon: 'pull-request',
-        component: './Flow/FlowPaging',
+      {
+        path: '/business',
+        name: '业务管理',
+        icon: 'profile',
         routes: [
+          { //流程分页
+            path: '/business/flow',
+            name: '业务流程管理',
+            icon: 'pull-request',
+            component: './Flow/FlowPaging',
+          },
           { //流程编辑
-            path: '/flow/edit',
+            path: '/business/flow/edit',
             name: '流程修改',
             component: './Flow/FlowEdit',
             hidden: true
-          }
-        ]
-      },
-      { //活动分页
-        path: '/activity',
-        name: '业务活动管理',
-        icon: 'inbox',
-        component: './Activity/ActivityPaging',
-        routes: [
+          },
+          { //活动分页
+            path: '/business/activity',
+            name: '业务活动管理',
+            icon: 'inbox',
+            component: './Activity/ActivityPaging',
+          },
           { //活动编辑
-            path: '/activity/edit',
+            path: '/business/activity/edit',
             name: '活动编辑',
             component: './Activity/ActivityEdit',
             hidden: true
