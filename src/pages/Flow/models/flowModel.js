@@ -1,4 +1,4 @@
-import {query} from '../services/flowService';
+import {query, create} from '../services/flowService';
 
 export default {
 
@@ -18,9 +18,13 @@ export default {
   },
 
   effects: {
-    *query({payload}, { call}) {
+    *query({payload}, { call }) {
       const response = yield call(query, payload);
       console.log("response",response);
     },
+    *create({payload}, {call}) {
+      const response = yield call(create, payload);
+      console.log("create response:", response);
+    }
   },
 }

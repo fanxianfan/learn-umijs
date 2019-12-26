@@ -78,7 +78,7 @@ class FlowPaging extends Component {
     const params = Object.assign(values);
 
     dispatch({
-      type: 'flowModel/query',
+      type: 'flowModel/create',
       payload: params
     });
   };

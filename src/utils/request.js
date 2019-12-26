@@ -13,11 +13,16 @@ require('isomorphic-fetch');
  */
 export async function request(url, options) {
 
-  //默认请求头属性
+  /*默认请求头属性*/
   const defaultHeader = {
     //AJAX请求头
     'X-Requested-With': 'XMLHttpRequest',
   };
+
+  if (!(options.body instanceof FormData)) {
+    //请求体数据类型
+    defaultHeader['Content-Type'] = 'application/json; charset=utf-8';
+  }
 
   if (options.hasOwnProperty('headers')) {
     options.headers = {
@@ -25,14 +30,12 @@ export async function request(url, options) {
       ...options.headers
     }
   } else {
-    options.headers = {
-      ...defaultHeader
-    }
+    options.headers = defaultHeader;
   }
-  //默认请求属性
+  /*默认请求属性*/
   const defaultOptions = {
     //不论是不是跨域的请求,总是发送请求资源域在本地的 cookies、 HTTP Basic authentication 等验证信息.
-    credentials : 'omit',
+    credentials : 'include',
     //允许跨源请求
     mode: 'cors',
   };
@@ -45,7 +48,6 @@ export async function request(url, options) {
 
   return fetch(url, fetchOptions)
     .then((response) => {
-      console.log("then1:", response);
       //响应正常
       if (response.status >= 200 && response.status < 300) {
         return response;
