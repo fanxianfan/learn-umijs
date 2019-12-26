@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import VerticalMenu from "@/components/VerticalMenu";
+import NavCrumbs from "@/components/Nav/NavCrumbs";
 
 /**
  * 活动编辑页面
@@ -8,7 +8,7 @@ class ActivityEdit extends Component {
   render() {
     return (
       <div>
-        <VerticalMenu.Breadcrumb/>
+        <NavCrumbs/>
         活动编辑
       </div>
     );

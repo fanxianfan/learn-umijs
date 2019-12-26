@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import VerticalMenu from "@/components/VerticalMenu";
+import NavCrumbs from "@/components/Nav/NavCrumbs";
 
 /**
  * 活动分页
@@ -8,7 +8,7 @@ class ActivityPaging extends Component {
   render() {
     return (
       <div>
-        <VerticalMenu.Breadcrumb/>
+        <NavCrumbs/>
       </div>
     );
   }

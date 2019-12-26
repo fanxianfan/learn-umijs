@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {Form, Card, Input, Row, Col, Select, DatePicker, Table, Divider, Button, Icon} from 'antd';
-import VerticalMenu from "@/components/VerticalMenu";
 import styles from '@/utils/common.less';
 import {FlowTypes, FlowStates} from '@/constants/FlowContants';
 import router from 'umi/router';
 import {connect} from 'dva';
+import CrumbsNav from "@/components/Nav/NavCrumbs";
 
 const {Option} = Select;
 const {RangePicker} = DatePicker;
@@ -107,7 +107,7 @@ class FlowPaging extends Component {
 
     return (
       <>
-        <VerticalMenu.Breadcrumb/>
+        <CrumbsNav/>
         <Row className={styles.m10}>
           <Card>
             <Form>

@@ -19,14 +19,42 @@ class Authority extends Component {
     }
     //校验：首页"/"
     if (props.match.isExact) {
-      router.replace(routeArray[0].path);
-      return;
+      const route = this.getFirstRoute(routeArray);
+      if (route !== null) {
+        router.replace(route.path);
+        return;
+      }
     }
     //校验：子页面
     if (!this.checkRouteArray(currentUrl, routeArray)) {
         router.replace('/404');
     }
   }
+
+  /**
+   * 获取第一个可用路由
+   * @param {array} routeArray 路由数组
+   * */
+  getFirstRoute = (routeArray) => {
+    if (Array.isArray(routeArray)) {
+      for (let i = 0; i < routeArray.length; i++) {
+        const route = routeArray[i];
+        const componentCheck = route.hasOwnProperty('component');
+        const hiddenCheck = route.hasOwnProperty('hidden') && route.hidden === true;
+        if (componentCheck && !hiddenCheck) {
+          return route;
+        }
+        //路由子查询
+        if (route.hasOwnProperty('routes')) {
+          const childRoute = this.getFirstRoute(route.routes);
+          if (childRoute !== null) {
+            return childRoute;
+          }
+        }
+      }
+    }
+    return null;
+  };
 
   /**
    * 校验页面是否存在

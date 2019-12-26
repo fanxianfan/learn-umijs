@@ -6,7 +6,7 @@ import {
 } from 'antd';
 import styles from './BasicLayout.less';
 import favicon from '../../public/favicon.ico';
-import VerticalMenu from "@/components/VerticalMenu";
+import VerticalMenu from "@/components/Menu/VerticalMenu";
 import zhCN from 'antd/es/locale/zh_CN';
 
 

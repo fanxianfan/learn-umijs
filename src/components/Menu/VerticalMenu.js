@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import {Icon, Menu, Breadcrumb} from 'antd';
-import Link from 'umi/link';
+import {Icon, Menu} from 'antd';
 import PropTypes from 'prop-types';
 import router from 'umi/router';
-import styles from './VerticalMenu.less';
 import {uuid} from '@/utils/common';
 
 
@@ -33,7 +31,7 @@ class VerticalMenu extends Component {
     VerticalMenu.location = props.location;
     this.setRoutesTree(props.route.routes);
     this.setRoutesArray(props.route.routes, undefined);
-    this.defaultRoute = this.setDefaultRoute();//默认的路由
+    this.defaultRoute = this.setDefaultRoute(props.location.pathname);//默认的路由
     this.state = {
       menuElements: this.installMenu(props.route.routes) //菜单DOM
     };
@@ -76,8 +74,11 @@ class VerticalMenu extends Component {
       const keys = Object.keys(route);
       if (keys.includes('path')) {
         /*组装routesArray*/
-        const bean = {parent: parent};
+        const bean = {parent: parent, hasComponent: false};
         keys.forEach((key) => {
+          if (key === 'component') {
+            bean.hasComponent = true
+          }
           if (typeof route[key] !== 'function' && key !== 'routes') {
             bean[key] = route[key];
           }
@@ -93,13 +94,30 @@ class VerticalMenu extends Component {
 
   /**
    * 设置默认的路由
+   * @param {string} pathname 路由的访问路径
+   * @return {object} 路由对象
    * */
-  setDefaultRoute = () => {
-    const currentPath = this.props.location.pathname;
+  setDefaultRoute = (pathname) => {
     for (let i = 0; i < VerticalMenu.routesArray.length; i++) {
       const route = VerticalMenu.routesArray[i];
-      if (route.path === currentPath) {
-        return route;
+      //找到路径匹配的路由
+      if (route.path === pathname) {
+        if (route.hasOwnProperty('hidden') && route.hidden === true) {
+          //如果匹配的路由为隐藏路由，则寻找其兄弟路由
+          for (let j = 0; j < VerticalMenu.routesArray.length; j++) {
+            const item = VerticalMenu.routesArray[j];
+            const sameParent = item.parent === route.parent;//有相同的父
+            const notSameKey = item.key !== route.key;//不同的key
+            const hidden = item.hasOwnProperty('hidden') && item.hidden === true;//隐藏
+            const pathInclude = route.path.includes(item.path);//路径被包含
+            if (sameParent && notSameKey && !hidden && pathInclude && item.hasComponent ) {
+              return item;
+            }
+          }
+          return null;
+        } else {
+          return route;
+        }
       }
     }
     return null;
@@ -215,58 +233,5 @@ class VerticalMenu extends Component {
     );
   }
 }
-
-VerticalMenu.Breadcrumb = class DBreadcrumb extends Component {
-  constructor(props) {
-    super(props);
-    this.itemArray = [];
-    //当前页面节点
-    for (let i = 0; i < VerticalMenu.routesArray.length; i++) {
-      const route = VerticalMenu.routesArray[i];
-      if (route.path === VerticalMenu.location['pathname']) {
-        this.itemArray.push({
-          parent: route.parent,
-          key: route.key,
-          element: (<Breadcrumb.Item key={route.key}><Link to={route.path}>{route.name}</Link></Breadcrumb.Item>)
-        });
-        break;
-      }
-    }
-    //迭代父节点
-    this.iteration();
-  }
-
-  iteration = () => {
-    const child = this.itemArray[0];
-    for (let i = 0; i < VerticalMenu.routesArray.length; i++) {
-      const route = VerticalMenu.routesArray[i];
-      if (route.key === child.parent) {
-        this.itemArray.unshift({
-          parent: route.parent,
-          key: route.key,
-          element: (<Breadcrumb.Item key={route.key}><Link to={route.path}>{route.name}</Link></Breadcrumb.Item>)
-        });
-        this.iteration();
-        break;
-      }
-    }
-  };
-
-  render() {
-    return (
-      <>
-        <Breadcrumb className={styles.breadcrumb}>
-          <Breadcrumb.Item>
-            首页
-          </Breadcrumb.Item>
-          {this.itemArray.map((item) => {
-            return item.element;
-          })}
-        </Breadcrumb>
-      </>
-    )
-  }
-
-};
 
 export default VerticalMenu;
