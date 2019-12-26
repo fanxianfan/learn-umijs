@@ -4,6 +4,7 @@ import VerticalMenu from "@/components/VerticalMenu";
 import styles from '@/utils/common.less';
 import {FlowTypes, FlowStates} from '@/constants/FlowContants';
 import router from 'umi/router';
+import {connect} from 'dva';
 
 const {Option} = Select;
 const {RangePicker} = DatePicker;
@@ -17,7 +18,7 @@ const columns = [
   {
     title: '流程类型',
     dataIndex: 'flowType',
-    render : (val) => {
+    render: (val) => {
       for (let i = 0; i < FlowTypes.length; i++) {
         if (val === FlowTypes[i].key) {
           return FlowTypes[i].desc;
@@ -52,6 +53,10 @@ const columns = [
 /**
  * 流程分页页面
  * */
+@connect(({flowModel, loading}) => ({
+  flowModel,
+  loading: loading.models.flowModel
+}))
 @Form.create()
 class FlowPaging extends Component {
 
@@ -59,12 +64,22 @@ class FlowPaging extends Component {
     dataSource: []
   };
 
+  componentDidMount() {
+    this.eventQuery();
+  }
+
   /**
    * 查询事件
    * */
   eventQuery = () => {
-    this.props.form.getFieldsValue((err, values) => {
-      console.log(values);
+    const {form, dispatch} = this.props;
+    const values = form.getFieldsValue();
+
+    const params = Object.assign(values);
+
+    dispatch({
+      type: 'flowModel/query',
+      payload: params
     });
   };
 
@@ -82,13 +97,12 @@ class FlowPaging extends Component {
   };
 
 
-
   render() {
     const {getFieldDecorator} = this.props.form;
 
     const fromItemStyle = {
-      labelCol:{md: {span: 9}, sm: {span: 10}},
-      wrapperCol:{md: {span: 15}, sm: {span: 14}}
+      labelCol: {md: {span: 9}, sm: {span: 10}},
+      wrapperCol: {md: {span: 15}, sm: {span: 14}}
     };
 
     return (
@@ -163,14 +177,15 @@ class FlowPaging extends Component {
                   <Button type='primary' onClick={this.eventCreate}>新建流程</Button>
                 </Col>
                 <Col span={12} className={styles.textAlignR}>
-                  <Button type='primary' className={styles.mr5} onClick={this.eventQuery}><Icon type="search" />查询</Button>
-                  <Button type='default' onClick={this.eventReload}><Icon type="reload" />重置</Button>
+                  <Button type='primary' className={styles.mr5} onClick={this.eventQuery}><Icon
+                    type="search"/>查询</Button>
+                  <Button type='default' onClick={this.eventReload}><Icon type="reload"/>重置</Button>
                 </Col>
               </Row>
             </Form>
           </Card>
           <Card className={styles.mt10}>
-            <Table bordered columns={columns} dataSource={this.state.dataSource} />
+            <Table bordered columns={columns} dataSource={this.state.dataSource}/>
           </Card>
         </Row>
       </>

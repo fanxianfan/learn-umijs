@@ -13,6 +13,11 @@ export default [
     path: '/403',
     component: './Error/Error403'
   },
+  /*500页面*/
+  {
+    path: '/500',
+    component: './Error/Error500'
+  },
   /*用户路由（登录 | 注册）*/
   {
     path: '/user', //请求路径
@@ -32,7 +37,7 @@ export default [
   {
     path: '/', //请求路径
     component: '../layouts/BasicLayout', //组件加载路径，相对于src/pages目录
-    Routes:['src/authorities/Authority'], // 权限路由，umi会通过Routes来渲染此路由
+    Routes: ['src/authorities/Authority'], // 权限路由，umi会通过Routes来渲染此路由
     routes: [ //子组件
       {
         path: '/business',
@@ -62,6 +67,73 @@ export default [
             name: '活动编辑',
             component: './Activity/ActivityEdit',
             hidden: true
+          }
+        ]
+      },
+
+      // test
+      {
+        path: '/business',
+        name: '业务管理',
+        icon: 'profile',
+        routes: [
+          { //流程分页
+            path: '/business/flow',
+            name: '业务流程管理',
+            icon: 'pull-request',
+            component: './Flow/FlowPaging',
+          }
+        ]
+      },
+      {
+        path: '/business',
+        name: '业务管理',
+        icon: 'profile',
+        routes: [
+          { //流程分页
+            path: '/business/flow',
+            name: '业务流程管理',
+            icon: 'pull-request',
+            component: './Flow/FlowPaging',
+          }
+        ]
+      },
+      {
+        path: '/business',
+        name: '业务管理',
+        icon: 'profile',
+        routes: [
+          { //流程分页
+            path: '/business/flow',
+            name: '业务流程管理',
+            icon: 'pull-request',
+            component: './Flow/FlowPaging',
+          }
+        ]
+      },
+      {
+        path: '/business',
+        name: '业务管理',
+        icon: 'profile',
+        routes: [
+          { //流程分页
+            path: '/business/flow',
+            name: '业务流程管理',
+            icon: 'pull-request',
+            component: './Flow/FlowPaging',
+          }
+        ]
+      },
+      {
+        path: '/business',
+        name: '业务管理',
+        icon: 'profile',
+        routes: [
+          { //流程分页
+            path: '/business/flow',
+            name: '业务流程管理',
+            icon: 'pull-request',
+            component: './Flow/FlowPaging',
           }
         ]
       }

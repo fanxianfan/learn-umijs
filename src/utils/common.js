@@ -2,7 +2,7 @@
  * 获取唯一值UUID
  * @return {string} uuid
  * */
-export function getUID() {
+export function uuid() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
     const r = (Math.random() * 16) | 0,
       v = c === 'x' ? r : (r & 0x3) | 0x8;

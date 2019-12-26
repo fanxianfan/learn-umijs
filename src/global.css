@@ -5,3 +5,38 @@ html, body, #root {
 body {
   margin: 0;
 }
+
+/**************************************************************************************************
+                                            滚动条样式
+***************************************************************************************************/
+/*滚动条整体部分*/
+body ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+  height: 10px;
+}
+
+/*!*滚动条的轨道（里面装有Thumb）*!*/
+body ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 5px;
+}
+
+/*滚动条里面的小方块，能向上向下移动（或往左往右移动，取决于是垂直滚动条还是水平滚动条）*/
+body ::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0);
+  -webkit-transition: color 0.2s ease;
+  transition: color 0.2s ease;
+}
+
+/*适用于所有滚动条，表示包含滚动条的区域，焦点不在该窗口的时候。*/
+body ::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(64, 78, 103, 0);
+}
+
+/*鼠标盘旋于滚动条之上时*/
+body ::-webkit-scrollbar-thumb:hover {
+  background: rgb(221, 221, 222);
+}

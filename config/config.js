@@ -17,12 +17,20 @@ export default {
     [
       'umi-plugin-react',
       {
-        antd: true, //引入antd样式组件
-        dva: true, //引入dva数据控制组件
-        dynamicImport: {webpackChunkName: true}, //按需加载
-        title: 'miaow面板', //项目标题
-        dll: false, //关闭dll功能
-        routes: { //路由配置
+        //引入antd样式组件
+        antd: true,
+        // 引入dva数据控制组件
+        dva: {
+          immer: true
+        },
+        //按需加载
+        dynamicImport: {webpackChunkName: true},
+        //项目标题
+        title: 'miaow面板',
+        //关闭dll功能
+        dll: false,
+        //路由配置
+        routes: {
           exclude: [
             /models\//,
             /services\//,
@@ -32,6 +40,6 @@ export default {
           ],
         },
       }
-    ],
+    ]
   ],
 }

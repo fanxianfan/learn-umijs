@@ -4,7 +4,7 @@ import Link from 'umi/link';
 import PropTypes from 'prop-types';
 import router from 'umi/router';
 import styles from './VerticalMenu.less';
-import {getUID} from '@/utils/common';
+import {uuid} from '@/utils/common';
 
 
 const {SubMenu} = Menu;
@@ -53,7 +53,7 @@ class VerticalMenu extends Component {
     if (Array.isArray(routes)) {
       routes.forEach((route) => {
         if (route.hasOwnProperty('path')) {
-          route.key = getUID();
+          route.key = uuid();
         }
         if (route.hasOwnProperty('routes') && Array.isArray(route.routes)) {
           this.setRoutesTree(route.routes);
@@ -209,7 +209,6 @@ class VerticalMenu extends Component {
             mode='inline'
             defaultSelectedKeys={this.defaultRoute ? this.defaultRoute.key : ''}
             defaultOpenKeys={[this.defaultRoute ? this.defaultRoute.parent : '']}
-            forceSubMenuRender={true}
             onSelect={this.handleMenuOnSelect}>
         {this.state.menuElements}
       </Menu>

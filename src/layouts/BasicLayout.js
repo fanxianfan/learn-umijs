@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {
   Layout,
   Icon,
-  notification,
   ConfigProvider
 } from 'antd';
 import styles from './BasicLayout.less';
@@ -25,7 +24,6 @@ class BasicLayout extends Component {
     this.state = {
       collapsed: false, //是否压缩边栏菜单
     };
-    notification.success({message: "欢迎进入首页"});
   }
 
   /**边栏菜单压缩控制*/
