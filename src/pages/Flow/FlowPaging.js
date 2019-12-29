@@ -9,7 +9,10 @@ import CrumbsNav from "@/components/Nav/NavCrumbs";
 const {Option} = Select;
 const {RangePicker} = DatePicker;
 
-/**流程列表*/
+/**
+ * 流程列表
+ * @author fxf
+ * */
 const columns = [
   {
     title: '流程名称',
@@ -52,6 +55,7 @@ const columns = [
 
 /**
  * 流程分页页面
+ * @author fxf
  * */
 @connect(({flowModel, loading}) => ({
   flowModel,

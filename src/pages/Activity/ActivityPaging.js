@@ -3,6 +3,7 @@ import NavCrumbs from "@/components/Nav/NavCrumbs";
 
 /**
  * 活动分页
+ * @author fxf
  * */
 class ActivityPaging extends Component {
   render() {

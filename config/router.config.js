@@ -40,6 +40,7 @@ export default [
     Routes: ['src/authorities/Authority'], // 权限路由，umi会通过Routes来渲染此路由
     routes: [ //子组件
       {
+        /*业务管理*/
         path: '/business',
         name: '业务管理',
         icon: 'profile',
@@ -70,70 +71,75 @@ export default [
           }
         ]
       },
-
-      // test
+      /*系统管理*/
       {
-        path: '/business',
-        name: '业务管理',
-        icon: 'profile',
+        path: '/system',
+        name: '系统管理',
+        icon: 'setting',
         routes: [
-          { //流程分页
-            path: '/business/flow',
-            name: '业务流程管理',
-            icon: 'pull-request',
-            component: './Flow/FlowPaging',
+          //系统权限管理
+          {
+            path: '/system/auth',
+            name: '系统权限管理',
+            icon: 'safety-certificate',
+            component: './SystemAuth/SystemAuthPaging',
+          },
+          //系统菜单管理
+          {
+            path: '/system/menu',
+            name: '系统菜单管理',
+            icon: 'menu',
+            component: './SystemMenu/SystemMenuPaging',
+          },
+          //系统角色管理
+          {
+            path: '/system/role',
+            name: '系统角色管理',
+            icon: 'team',
+            component: './SystemRole/SystemRolePaging',
+          },
+          //系统用户管理
+          {
+            path: '/system/user',
+            name: '系统用户管理',
+            icon: 'user',
+            component: './SystemUser/SystemUserPaging',
+          },
+          //系统任务调度
+          {
+            path: '/system/task',
+            name: '系统任务调度',
+            icon: 'history',
+            component: './SystemTask/SystemTaskPaging',
           }
         ]
       },
+      /*工具箱*/
       {
-        path: '/business',
-        name: '业务管理',
-        icon: 'profile',
+        path: '/toolkit',
+        name: '工具箱',
+        icon: 'appstore',
         routes: [
-          { //流程分页
-            path: '/business/flow',
-            name: '业务流程管理',
-            icon: 'pull-request',
-            component: './Flow/FlowPaging',
-          }
-        ]
-      },
-      {
-        path: '/business',
-        name: '业务管理',
-        icon: 'profile',
-        routes: [
-          { //流程分页
-            path: '/business/flow',
-            name: '业务流程管理',
-            icon: 'pull-request',
-            component: './Flow/FlowPaging',
-          }
-        ]
-      },
-      {
-        path: '/business',
-        name: '业务管理',
-        icon: 'profile',
-        routes: [
-          { //流程分页
-            path: '/business/flow',
-            name: '业务流程管理',
-            icon: 'pull-request',
-            component: './Flow/FlowPaging',
-          }
-        ]
-      },
-      {
-        path: '/business',
-        name: '业务管理',
-        icon: 'profile',
-        routes: [
-          { //流程分页
-            path: '/business/flow',
-            name: '业务流程管理',
-            icon: 'pull-request',
-            component: './Flow/FlowPaging',
+          //JS语句实验
+          {
+            path: '/toolkit/jsTest',
+            name: 'JS语句实验',
+            icon: 'experiment',
+            component: './ToolkitJs/JsIndex'
+          },
+          //动画效果
+          {
+            path: '/toolkit/animation',
+            name: '动画效果',
+            icon: 'smile',
+            component: './ToolKitAnimation/AnimationIndex',
+          },
+          //生活日历
+          {
+            path: '/toolkit/calendar',
+            name: '生活日历',
+            icon: 'calendar',
+            component: './ToolKitCalendar/CalendarIndex',
           }
         ]
       }

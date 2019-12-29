@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'antd';
 
-/**用户登录页面*/
+/**
+ * 用户登录页面
+ * @author fxf
+ * */
 class UserLogin extends Component {
   render() {
     return (

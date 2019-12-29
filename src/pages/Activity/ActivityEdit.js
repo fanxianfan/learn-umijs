@@ -3,6 +3,7 @@ import NavCrumbs from "@/components/Nav/NavCrumbs";
 
 /**
  * 活动编辑页面
+ * @author fxf
  * */
 class ActivityEdit extends Component {
   render() {
