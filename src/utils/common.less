@@ -21,6 +21,35 @@
   }
 }
 
+.blockquote {
+  color: #656565;
+  background-color: #f7f7f7;
+  border-left: 0.4em solid @primary-color;
+  padding: 1em 1.5em 1em 1.5em;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  line-height: 150%;
+  text-indent: 35px;
+}
+.blockquote:before {
+  color: @primary-color;
+  content: "\201C";
+  font-size: 5em;
+  position:absolute;
+  left:-15px;
+  top: 40px;
+  line-height: 0.1em;
+}
+.blockquote:after {
+  color: @primary-color;
+  content: "\201D";
+  font-size: 5em;
+  position:absolute;
+  right:15px;
+  bottom: 0;
+  line-height: 0.1em;
+}
+
 // textAlign
 .textAlignL {
   color: @primary-color;
