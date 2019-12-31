@@ -132,14 +132,21 @@ export default [
             path: '/toolkit/animation',
             name: '动画效果',
             icon: 'smile',
-            component: './ToolKitAnimation/AnimationIndex',
+            component: './ToolkitAnimation/AnimationIndex',
           },
           //生活日历
           {
-            path: '/toolkit/calendar',
+            path: '/toolkit/antCalendar',
             name: '生活日历',
             icon: 'calendar',
-            component: './ToolKitCalendar/CalendarIndex',
+            component: './ToolkitCalendar/AntCalendarIndex',
+          },
+          //事件日历
+          {
+            path: '/toolkit/fullCalendar',
+            name: '事件日历',
+            icon: 'clock-circle',
+            component: './ToolkitCalendar/FullCalendarIndex',
           }
         ]
       }
