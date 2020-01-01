@@ -147,6 +147,13 @@ export default [
             name: '事件日历',
             icon: 'clock-circle',
             component: './ToolkitCalendar/FullCalendarIndex',
+          },
+          //工作流文档
+          {
+            path: '/toolkit/document/activiti',
+            name: '工作流文档',
+            icon: 'book',
+            component: './ToolkitDocument/ActivitiDocument',
           }
         ]
       }
