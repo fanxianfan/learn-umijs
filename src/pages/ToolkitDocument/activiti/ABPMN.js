@@ -6,11 +6,11 @@ import stylesUtil from '../ActivitiDocument.less';
 /**
  * 工作流：BPMN知识点
  * */
-class A_BPMN extends Component {
+class ABPMN extends Component {
   render() {
     return (
-      <div id='A_BPMN'>
-        <blockquote className={styles.blockquote}>
+      <>
+        <blockquote id='ABPMN' className={styles.blockquote}>
           BPMN模型，5类基础元素
         </blockquote>
         <ol>
@@ -131,12 +131,15 @@ class A_BPMN extends Component {
           <li>
             <b>注释（Text Annotation）</b>
             <p>主要为阅读流程图的人提供附 加的文字信息。</p>
-            <div />
+            <div style={{display: 'flex'}}>
+              <div style={{width: 40, borderTop: '#000000 dashed 2px', transform: 'rotate(-45deg)', marginTop: 30}} />
+              <div style={{width: 30, borderLeft: '#000000 solid 2px', borderTop: '#000000 solid 2px', borderBottom: '#000000 solid 2px', marginLeft: -14}}>流程注释</div>
+            </div>
           </li>
         </ol>
-      </div>
+      </>
     );
   }
 }
 
-export default A_BPMN;
+export default ABPMN;
