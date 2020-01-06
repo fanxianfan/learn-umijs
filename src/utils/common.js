@@ -9,3 +9,9 @@ export function uuid() {
     return v.toString(16);
   });
 }
+
+/**
+ * 唯一ID
+ * @return {string} uuid
+ * */
+export const uniqueID = uuid();

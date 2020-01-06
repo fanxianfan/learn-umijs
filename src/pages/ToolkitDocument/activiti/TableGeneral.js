@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Tag} from "antd";
 import styles from '@/utils/common.less';
 
 /**
@@ -9,7 +10,13 @@ class TableGeneral extends Component {
   render() {
     return (
       <div id='TableGeneral'>
-        <blockquote className={styles.blockquote}>Activiti通用数据表</blockquote>
+        <blockquote className={styles.blockquote}>
+          Activiti通用数据表（General）2张
+        </blockquote>
+        <div className={styles.m10}>
+          <Tag color='blue'>act_ge_bytearray</Tag>
+          <Tag color='blue'>act_ge_property</Tag>
+        </div>
         <p style={{textIndent: 30}}>
           通用数据表用于存放一些通过的数据，这些表本身不关心特定的流程或者业务， 只用于存放业务或者流程所使用的通用资源。
           它们可以独立存在于流程引擎或者应用系统中，其他的数据表也可以使用这些表中的数据。通用数据表有两个，都是用ACT_GE开头。

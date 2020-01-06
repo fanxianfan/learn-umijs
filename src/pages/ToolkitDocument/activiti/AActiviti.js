@@ -32,6 +32,7 @@ class AActiviti extends Component {
             <p>默认密码：test</p>
             <img src={activitiLogin} alt='登录图片' width='100%' height='auto'/>
           </li>
+          <br/>
           <li>
             <b>首页介绍</b>
             <p>主界面的三个菜单功能</p>

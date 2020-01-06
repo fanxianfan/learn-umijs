@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import styles from '@/utils/common.less';
+import {Tag} from "antd";
 
 /**
  * Activiti身份数据表
@@ -10,15 +11,35 @@ class TableIdentity extends Component {
     return (
       <>
         <blockquote id='TableIdentity' className={styles.blockquote}>
-          Activiti身份数据表
+          Activiti身份数据表（Identity）4张
         </blockquote>
+        <div className={styles.m10}>
+          <Tag color='geekblue'>act_id_group</Tag>
+          <Tag color='geekblue'>act_id_user</Tag>
+          <Tag color='geekblue'>act_id_info</Tag>
+          <Tag color='geekblue'>act_id_membership</Tag>
+        </div>
         <p>
           Activiti的整个身份数据模块，可以完全独立存在。身份数据表并没有保存流程相关的数据以及关联。
           身份表名称使用ACT_ID开头
         </p>
         <ul>
           <li>
-            <b>用户表（ACT_ID_USER）</b>
+            <b>用户组表（act_id_group）</b>
+            <ol>
+              <li><b>ID_：</b>主键</li>
+              <li><b>REV_:</b>数据版本号</li>
+              <li><b>NAME_:</b>用户组名称</li>
+              <li><b>TYPE_:</b>用户组类型，类型不由Activiti提供。</li>
+            </ol>
+          </li>
+          <br/>
+          <li>
+            <b>用户基本信息表（act_id_user）</b>
+            <p>
+              Activiti将用户、用户账号、用户信息分为三种数据。
+              其中用户表保存用户数据，而用户账号和用户信息保存到ACT_ID_INFO表中，
+            </p>
             <ol>
               <li><b>ID_:</b>主键</li>
               <li><b>REV_:</b>数据版本号</li>
@@ -31,11 +52,7 @@ class TableIdentity extends Component {
           </li>
           <br/>
           <li>
-            <b>用户账号信息表（ACT_ID_INFO）</b>
-            <p>
-              Activiti将用户、用户账号、用户信息分为三种数据。
-              其中用户表保存用户数据，而用户账号和用户信息保存到ACT_ID_INFO表中，
-            </p>
+            <b>用户详细信息表（act_id_info）</b>
             <ol>
               <li><b>ID_:</b>主键</li>
               <li><b>REV_:</b>数据版本</li>
@@ -52,17 +69,7 @@ class TableIdentity extends Component {
           </li>
           <br/>
           <li>
-            <b>用户组表（ACT_ID_GROUP）</b>
-            <ol>
-              <li><b>ID_：</b>主键</li>
-              <li><b>REV_:</b>数据版本号</li>
-              <li><b>NAME_:</b>用户组名称</li>
-              <li><b>TYPE_:</b>用户组类型，类型不由Activiti提供。</li>
-            </ol>
-          </li>
-          <br/>
-          <li>
-            <b>关系表（ACT_ID_MEMBERSHIP）</b>
+            <b>关系表（act_id_membership）</b>
             <p>
               一个用户组可以有多个用户，同时一个用户也可以数据不同的用户组，此表为多对多的中间关系表。
             </p>
