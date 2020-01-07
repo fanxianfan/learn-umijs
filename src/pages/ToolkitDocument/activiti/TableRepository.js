@@ -24,7 +24,7 @@ class TableRepository extends Component {
         </p>
         <ul>
           <li id='@act_procdef_info'>
-            <b>流程定义的动态变更信息表（act_procdef_info）</b>
+            <b>流程定义动态变更表（act_procdef_info）</b>
             <ol>
               <li><b>ID_：</b>主键</li>
               <li><b>PROC_DEF_ID_：</b>关联流程定义ID</li>
@@ -44,14 +44,14 @@ class TableRepository extends Component {
               <li><b>NAME_:</b>流程部署时的名称，可以调用Activiti的流程存储API来设置</li>
               <li><b>CATEGORY_:</b>流程部署时的分类</li>
               <li><b>KEY_:</b>部署标识key</li>
-              <li><b>TENANT_ID_:</b></li>
+              <li><b>TENANT_ID_:</b>租户ID</li>
               <li><b>DEPLOY_TIME_:</b>部署时间</li>
               <li><b>ENGINE_VERSION_:</b>引擎版本</li>
             </ol>
           </li>
           <br/>
           <li id='@act_re_model'>
-            <b>流程模型表（act_re_model）</b>
+            <b>流程模型表（act_re_model）(用于web设计器)</b>
             <ol>
               <li><b>ID_:</b>主键</li>
               <li><b>REV_:</b>数据版本</li>
@@ -65,7 +65,7 @@ class TableRepository extends Component {
               <li><b>DEPLOYMENT_ID_:</b>关联部署ID</li>
               <li><b>EDITOR_SOURCE_VALUE_ID_:</b>编辑的资源值</li>
               <li><b>EDITOR_SOURCE_EXTRA_VALUE_ID_:</b>编辑的特殊资源值</li>
-              <li><b>TENANT_ID_:</b></li>
+              <li><b>TENANT_ID_:</b>租户ID</li>
             </ol>
           </li>
           <br/>
@@ -92,7 +92,7 @@ class TableRepository extends Component {
               <li><b>HAS_GRAPHICAL_NOTATION_:</b></li>
               <li><b>SUSPENSION_STATE_:</b>表示流程定义的状态是激活还是中止，激活状态时值为1，中止后字段值为2，
                 如果流程定义被设置为中止状态， 那么将不能启动流程。</li>
-              <li><b>TENANT_ID_:</b></li>
+              <li><b>TENANT_ID_:</b>租户ID</li>
               <li><b>ENGINE_VERSION_:</b>引擎版本号</li>
             </ol>
           </li>

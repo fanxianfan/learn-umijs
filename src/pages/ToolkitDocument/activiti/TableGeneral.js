@@ -22,8 +22,8 @@ class TableGeneral extends Component {
           它们可以独立存在于流程引擎或者应用系统中，其他的数据表也可以使用这些表中的数据。通用数据表有两个，都是用ACT_GE开头。
         </p>
         <ul>
-          <li>
-            <b>资源表 （ACT_GE_BYTEARRAY）</b>
+          <li id='@act_ge_bytearray'>
+            <b>资源表 （act_ge_bytearray）</b>
             <p>
               用于保存与流程引擎相关的资源，只要调用了Activiti存储服务的API，其提供的资源均会被转换为byte数据，
               并保存到此表中。
@@ -51,8 +51,8 @@ class TableGeneral extends Component {
             </ol>
           </li>
           <br/>
-          <li>
-            <b>属性表 （ACT_GE_PROPERTY）</b>
+          <li id='@act_ge_property'>
+            <b>属性表 （act_ge_property）</b>
             <p>将全部的属性抽象为key-value对，每个属性都有名称和值，使用ACT_GE_PROPERTY来保存这些属性</p>
             <ol>
               <li>

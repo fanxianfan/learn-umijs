@@ -24,7 +24,7 @@ class TableIdentity extends Component {
           身份表名称使用ACT_ID开头
         </p>
         <ul>
-          <li>
+          <li id='@act_id_group'>
             <b>用户组表（act_id_group）</b>
             <ol>
               <li><b>ID_：</b>主键</li>
@@ -34,7 +34,7 @@ class TableIdentity extends Component {
             </ol>
           </li>
           <br/>
-          <li>
+          <li id='@act_id_user'>
             <b>用户基本信息表（act_id_user）</b>
             <p>
               Activiti将用户、用户账号、用户信息分为三种数据。
@@ -51,7 +51,7 @@ class TableIdentity extends Component {
             </ol>
           </li>
           <br/>
-          <li>
+          <li id='@act_id_info'>
             <b>用户详细信息表（act_id_info）</b>
             <ol>
               <li><b>ID_:</b>主键</li>
@@ -68,8 +68,8 @@ class TableIdentity extends Component {
             </ol>
           </li>
           <br/>
-          <li>
-            <b>关系表（act_id_membership）</b>
+          <li id='@act_id_membership'>
+            <b>用户与用户组关系表（act_id_membership）</b>
             <p>
               一个用户组可以有多个用户，同时一个用户也可以数据不同的用户组，此表为多对多的中间关系表。
             </p>
