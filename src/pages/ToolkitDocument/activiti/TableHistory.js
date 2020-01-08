@@ -104,7 +104,7 @@ class TableHistory extends Component {
             <ol>
               <li><b>ID_:</b>主键</li>
               <li><b>GROUP_ID_:</b>关联用户组ID</li>
-              <li><b>TYPE_:</b>类型</li>
+              <li><b>TYPE_:</b>类型，participant参与者、</li>
               <li><b>USER_ID_:</b>关联用户ID</li>
               <li><b>TASK_ID_:</b>关联任务ID</li>
               <li><b>PROC_INST_ID_:</b>关联流程实例ID</li>

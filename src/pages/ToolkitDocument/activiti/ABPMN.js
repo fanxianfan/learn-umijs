@@ -17,7 +17,7 @@ class ABPMN extends Component {
           <li>
             <b>流对象（Flow Objects）</b>
             <p>
-              在一个业务流程中，流对象是用于定义行为的图形元素，主要有 事件（Events）、活动（Activities）、网关（Gateways），三种流对象。
+              在一个业务流程中，流对象是用于定义行为的图形元素，主要有 事件（Events）、节点(活动)（Activities）、网关（Gateways），三种流对象。
             </p>
           </li>
           <li>
@@ -55,8 +55,8 @@ class ABPMN extends Component {
             <div className={stylesUtil.circleHollow} />
           </li>
           <li>
-            <b>活动（Activities）</b>
-            <p>活动是工作流中一个通用的术 语，活动包括任务（Task）和 子流程（Sub-Process）。</p>
+            <b>节点（活动）（Activities）</b>
+            <p>节点是工作流中一个通用的术语，节点包括任务（Task）和 子流程（Sub-Process）。</p>
             <div className={stylesUtil.squareHollow} />
           </li>
           <li>
@@ -66,7 +66,7 @@ class ABPMN extends Component {
           </li>
           <li>
             <b>顺序流（Sequence Flow）</b>
-            <p>顺序流显示流程将会执行哪个 活动。</p>
+            <p>顺序流显示流程将会执行哪个节点。</p>
             <div>
               <div style={{float: 'left', width: '150px', height: '100%'}}>
                 <div style={{ borderTop: '#000000 solid 2px', marginTop: '13px'}}/>
@@ -115,22 +115,22 @@ class ABPMN extends Component {
           </li>
           <li>
             <b>数据对象（Data Object）</b>
-            <p>表示活动需要的 或者产生的信息</p>
+            <p>表示节点需要的信息或者产生的信息</p>
             <Icon type='file' style={{fontSize: 50}}/>
           </li>
           <li>
             <b>消息（Message）</b>
-            <p>用于描述流程参与者 之间的沟通内容</p>
+            <p>用于描述流程参与者之间的沟通内容</p>
             <Icon type='mail' style={{fontSize: 50}}/>
           </li>
           <li>
             <b>组（Group）</b>
-            <p>主要用于存放一些流程信息， 包括流程文档、流程分析信息 等。</p>
+            <p>主要用于存放一些流程信息，包括流程文档、流程分析信息等。</p>
             <div style={{border: '#000000 dashed 2px', borderRadius: '5px', width: 80, height: 80}}/>
           </li>
           <li>
             <b>注释（Text Annotation）</b>
-            <p>主要为阅读流程图的人提供附 加的文字信息。</p>
+            <p>主要为阅读流程图的人提供附加的文字信息。</p>
             <div style={{display: 'flex'}}>
               <div style={{width: 40, borderTop: '#000000 dashed 2px', transform: 'rotate(-45deg)', marginTop: 30}} />
               <div style={{width: 30, borderLeft: '#000000 solid 2px', borderTop: '#000000 solid 2px', borderBottom: '#000000 solid 2px', marginLeft: -14}}>流程注释</div>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styles from '@/utils/common.less';
-import activitiLogin from '../image/activitiLogin.png';
-import activitiHome from '../image/activitiHome.png';
+import activitiLogin from '../images/activitiLogin.png';
+import activitiHome from '../images/activitiHome.png';
 
 /**
  * Activiti介绍

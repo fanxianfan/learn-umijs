@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import styles from '@/utils/common.less';
-import activitiEngine from '../image/activitiEngine.png';
+import activitiEngine from '../images/activitiEngine.png';
 
 /**
  * Activiti引擎多租户方案
