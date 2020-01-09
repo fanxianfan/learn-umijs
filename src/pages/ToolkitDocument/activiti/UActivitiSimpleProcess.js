@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import styles from '@/utils/common.less';
-import {Button, Modal, Table , notification} from "antd";
+import {Button, Modal, Table, notification} from "antd";
 import {connect} from "dva";
 import exampleImg from '../images/activitiExample1.png';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import {monokai} from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 /**
  * Activiti:工作流服务
@@ -32,14 +34,18 @@ class UActivitiSimpleProcess extends Component {
     {title: "Assignee", dataIndex: "Assignee"},
     {title: "CreateTime", dataIndex: "CreateTime"},
     {title: "ClaimTime", dataIndex: "ClaimTime"},
-    {title: "操作", dataIndex: "options",
+    {
+      title: "操作", dataIndex: "options",
       render: (text, record) => {
         return (
-          <Button type={"primary"} onClick={() => {this.eventClickTaskComplete(record['Id'])}}>
+          <Button type={"primary"} onClick={() => {
+            this.eventClickTaskComplete(record['Id'])
+          }}>
             推向下一节点
           </Button>
         )
-      }}
+      }
+    }
   ];
 
 
@@ -53,7 +59,7 @@ class UActivitiSimpleProcess extends Component {
       payload: {
         callback: (res) => {
           if (res.hasOwnProperty('status')) {
-            if (res.status === 0){
+            if (res.status === 0) {
               notification.success({message: "流程部署成功"})
             } else {
               notification.error({message: res.message})
@@ -74,7 +80,7 @@ class UActivitiSimpleProcess extends Component {
       payload: {
         callback: (res) => {
           if (res.hasOwnProperty('status')) {
-            if (res.status === 0){
+            if (res.status === 0) {
               notification.success({message: "流程开启成功"})
             } else {
               notification.error({message: res.message})
@@ -144,12 +150,40 @@ class UActivitiSimpleProcess extends Component {
                footer={null}
                width={'auto'}
         >
-          <Table columns={this.columns} dataSource={this.state.taskDataSource} />
+          <Table columns={this.columns} dataSource={this.state.taskDataSource}/>
         </Modal>
 
 
         <blockquote id='UActivitiSimpleProcess' className={styles.blockquote}>Activiti简单示例（1）</blockquote>
         <div>
+          <b>BPMN流程配置文档temp.bpmn(核心内容)</b>
+          <SyntaxHighlighter language={'xml'} style={monokai}>
+            {'  <!--流程描述-->\n' +
+            '    <process id="myProcess_1" isExecutable="true">\n' +
+            '        <!--开始节点-->\n' +
+            '        <startEvent id="_2" name="开始节点">\n' +
+            '            <documentation id="_2_D_1">描述：开始节点</documentation>\n' +
+            '        </startEvent>\n' +
+            '        <!--用户任务-->\n' +
+            '        <userTask activiti:assignee="${user_u1}" activiti:exclusive="true" id="_3" name="员工请假申请">\n' +
+            '            <documentation id="_3_D_1">描述：员工请假申请</documentation>\n' +
+            '        </userTask>\n' +
+            '        <!--连接流程-->\n' +
+            '        <sequenceFlow id="_4" sourceRef="_2" targetRef="_3"/>\n' +
+            '        <!--用户任务-->\n' +
+            '        <userTask activiti:assignee="${user_u2}" activiti:exclusive="true" id="_5" name="领导审核">\n' +
+            '            <documentation id="_5_D_1">描述：领导审核</documentation>\n' +
+            '        </userTask>\n' +
+            '        <!--连接流程-->\n' +
+            '        <sequenceFlow id="_6" sourceRef="_3" targetRef="_5"/>\n' +
+            '        <!--结束节点-->\n' +
+            '        <endEvent id="_7" name="结束节点">\n' +
+            '            <documentation id="_7_D_1">描述：结束节点</documentation>\n' +
+            '        </endEvent>\n' +
+            '        <!--连接节点-->\n' +
+            '        <sequenceFlow id="_8" sourceRef="_5" targetRef="_7"/>\n' +
+            '    </process>'}
+          </SyntaxHighlighter>
           <img alt={"示例流程图"} src={exampleImg} width={200} height={'auto'}/>
           <ol>
             <li>
@@ -176,20 +210,24 @@ class UActivitiSimpleProcess extends Component {
                 <li>act_hi_taskinst，历史任务表，添加1条记录</li>
                 <li>act_hi_varinst，历史变量表，添加1条记录</li>
                 <li>act_ru_execution，流程实例与分支执行表，添加1条记录</li>
-                <li>act_ru_identitylink，参与者相关信息表，添加1条记录 </li>
+                <li>act_ru_identitylink，参与者相关信息表，添加1条记录</li>
                 <li>act_ru_task，用户任务表，添加1条记录</li>
                 <li>act_ru_variable，运行时变量表，添加1条记录</li>
               </ul>
             </li>
             <br/>
             <li>
-              <Button type='primary' block onClick={() => {this.eventClickTaskQuery('jonas')}}>
+              <Button type='primary' block onClick={() => {
+                this.eventClickTaskQuery('jonas')
+              }}>
                 请求API（获取员工待处理的任务）
               </Button>
             </li>
             <br/>
             <li>
-              <Button type={"primary"} block onClick={() => {this.eventClickTaskQuery('kevin')}}>
+              <Button type={"primary"} block onClick={() => {
+                this.eventClickTaskQuery('kevin')
+              }}>
                 请求API（获取领导待处理的任务）
               </Button>
               <p>完成流程后的数据库变化</p>

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Row, Col, Card, Anchor } from 'antd';
 import styles from '@/utils/common.less';
 
-import ABPMN from './activiti/ABPMN';
+import BPMN from './activiti/BPMN';
 import AActiviti from './activiti/AActiviti';
 import CModeOrder from './activiti/CModeOrder';
 import CModeChain from './activiti/CModeChain';
@@ -15,6 +15,7 @@ import {uniqueID} from "@/utils/common";
 import EngineTenant from "@/pages/ToolkitDocument/activiti/EngineTenant";
 import UActivitiSimpleProcess from "@/pages/ToolkitDocument/activiti/UActivitiSimpleProcess";
 import UActivitiDeployment from "@/pages/ToolkitDocument/activiti/UActivitiDeployment";
+import UActivitiElement from "@/pages/ToolkitDocument/activiti/UActivitiElement";
 
 const { Link } = Anchor;
 
@@ -30,7 +31,6 @@ class ActivitiDocument extends Component {
        <Row gutter={16} className={styles.m10}>
          <Col span={6}>
            <Anchor getContainer={() => (document.getElementById(uniqueID))} style={{maxHeight: '91vh'}}>
-             <Link href="#ABPMN" title="BPMN规范——业务流程建模标记法"/>
              <Link href="#AActiviti" title="Activiti概述" />
              <Link href='#TableGeneral' title={<b>Activiti中的表：通用数据表(2张)</b>}>
                <Link href='#@act_ge_bytearray' title='全局资源表(act_ge_bytearray)'/>
@@ -70,27 +70,30 @@ class ActivitiDocument extends Component {
                <Link href='#@act_hi_comment' title='评论表(act_hi_comment)'/>
                <Link href='#@act_evt_log' title='事件日志表(act_evt_log)'/>
              </Link>
-             <Link href='#EngineTenant' title='Activiti引擎多租户方案'/>
-             <Link href='#UActivitiSimpleProcess' title='使用详解：简单示例'/>
-             <Link href='#UActivitiDeployment' title='使用详解：流程部署'/>
+             <Link href="#BPMN" title="BPMN规范——业务流程建模标记法"/>
+             <Link href='#UActivitiSimpleProcess' title={<b>使用详解：简单示例</b>}/>
+             <Link href='#UActivitiDeployment' title={<b>使用详解：流程部署</b>}/>
+             <Link href='#UActivitiElement' title={<b>使用详解：流程文档解析</b>}/>
              <Link href="#CModeOrder" title='Activiti中的命令模式'/>
              <Link href="#CModeChain" title='Activiti中的责任链模式'/>
+             <Link href='#EngineTenant' title='Activiti引擎多租户方案'/>
            </Anchor>
          </Col>
          <Col span={18} className={`${styles.pl5} ${styles.pr5}`}>
            <Card>
-             <ABPMN/>
              <AActiviti/>
              <TableGeneral/>
              <TableRepository/>
              <TableIdentity/>
              <TableRuntime/>
              <TableHistory/>
-             <EngineTenant/>
+             <BPMN/>
              <UActivitiSimpleProcess/>
              <UActivitiDeployment/>
+             <UActivitiElement/>
              <CModeOrder/>
              <CModeChain/>
+             <EngineTenant/>
            </Card>
          </Col>
        </Row>

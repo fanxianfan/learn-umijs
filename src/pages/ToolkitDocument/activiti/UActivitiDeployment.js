@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import styles from '@/utils/common.less';
 import {Alert, Divider, Tag} from "antd";
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import {monokaiSublime} from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 /**
  * Activiti 流程部署
@@ -29,16 +31,10 @@ class UActivitiDeployment extends Component {
           </ol>
           <Divider/>
           <Alert type={'info'} message={'部署流程的核心代码'} showIcon/>
-          <p style={{
-            textIndent: 30,
-            marginTop: 15,
-            borderTop: '#000000 dotted 1px',
-            borderBottom: '#000000 dotted 1px'
-          }}>
-            <code>
-              <b>DeploymentBuilder deploymentBuilder= this.repositoryService.createDeployment();</b>
-            </code>
-          </p>
+          <br/>
+          <SyntaxHighlighter language='java' style={monokaiSublime}>
+            {'DeploymentBuilder deploymentBuilder = this.repositoryService.createDeployment();'}
+          </SyntaxHighlighter>
           <p style={{textIndent: 30, marginTop: 10}}>
             DeploymentBuilder类是部署流程的核心类，通过核心类可以对流程进行部署，其中repositoryService是通过ProcessEngine对象获取，其中ProcessEngine是通过流程引擎配置对象获取。
           </p>
@@ -46,67 +42,87 @@ class UActivitiDeployment extends Component {
             <li>
               <Tag color={'blue'}>通过流的方式部署资源文件</Tag>
               <br/>
-              <code>public abstract DeploymentBuilder addInputStream(String s, java.io.InputStream inputStream)</code>
+              <SyntaxHighlighter language='java' style={monokaiSublime}>
+                {'public abstract DeploymentBuilder addInputStream(String s, InputStream inputStream)'}
+              </SyntaxHighlighter>
             </li>
             <li>
               <Tag color={'blue'}>通过资源文件所在的classpath进行部署</Tag>
               <br/>
-              <code>public abstract DeploymentBuilder addClasspathResource(String s)</code>
+              <SyntaxHighlighter language={'java'} style={monokaiSublime}>
+                {'public abstract DeploymentBuilder addClasspathResource(String s)'}
+              </SyntaxHighlighter>
             </li>
             <li>
               <Tag color={'blue'}>通过字符串的方式部署</Tag>
               <br/>
-              <code>public abstract DeploymentBuilder addString(String s, String s1)</code>
+              <SyntaxHighlighter language={'java'} style={monokaiSublime}>
+                {'public abstract DeploymentBuilder addString(String s, String s1)'}
+              </SyntaxHighlighter>
             </li>
             <li>
               <Tag color={'blue'}>通过字节数组的方式部署</Tag>
               <br/>
-              <code>public abstract DeploymentBuilder addBytes(String s, byte[] bytes)</code>
+              <SyntaxHighlighter language={'java'} style={monokaiSublime}>
+                {'public abstract DeploymentBuilder addBytes(String s, byte[] bytes)'}
+              </SyntaxHighlighter>
             </li>
             <li>
               <Tag color={'blue'}>通过压缩流ZipInputStream部署</Tag>
               <br/>
-              <code>public abstract DeploymentBuilder addZipInputStream(java.util.zip.ZipInputStream
-                zipInputStream)</code>
+              <SyntaxHighlighter language={'java'} style={monokaiSublime}>
+                {'public abstract DeploymentBuilder addZipInputStream(java.util.zip.ZipInputStream zipInputStream)'}
+              </SyntaxHighlighter>
             </li>
             <li>
               <Tag color={'blue'}>通过BpmnModel对象部署</Tag>
               <br/>
-              <code>public abstract DeploymentBuilder addBpmnModel(String s, org.activiti.bpmn.model.BpmnModel
-                bpmnModel)</code>
+              <SyntaxHighlighter language={'java'} style={monokaiSublime}>
+                {'public abstract DeploymentBuilder addBpmnModel(String s, BpmnModel bpmnModel)'}
+              </SyntaxHighlighter>
             </li>
           </ol>
           <p style={{textIndent: 30}}>
             最后部署流程使用方法：<code><b>deploymentBuilder.deploy()</b></code>完成部署；
           </p>
 
-          <Alert type={'info'} message={'BpmnModel部署方式'} showIcon/>
+          <Alert type={'info'} message={'BpmnModel方式部署详解'} showIcon className={styles.mb10} />
           <ul>
             <li>
-              <b>构造BpmnModal</b>
+              <b>构造BpmnModel</b>
               <p style={{textIndent: 30}}>
                 BpmnModel是通过java类来构造流程，activiti提供了每个元素的实体类，可以直接实例化并组合构成流程实例。
               </p>
             </li>
             <li>
-              <b>校验BpmnModal</b>
+              <b>校验BpmnModel</b>
               <p style={{textIndent: 30}}>
-                Activiti提供了校验BpmnModal实例对象的类ProcessValidatorFactory，确保实例对象转换之后的XML格式是正确的。
+                Activiti提供了校验BpmnModel实例对象的类ProcessValidatorFactory，确保实例对象转换之后的XML格式是正确的。
                 代码如下：
               </p>
-              <pre style={{paddingTop: 3}}>
-                <ol>
-                  <li>ProcessValidatorFactory validatorFactory = new ProcessValidatorFactory();</li>
-                  <li>List&le;ValidationError&gt; errorLs = validatorFactory.createDefaultProcessValidator().validate(new BpmnModel());</li>
-                </ol>
-              </pre>
+              <SyntaxHighlighter language={'java'} style={monokaiSublime}>
+                {
+                'ProcessValidatorFactory validatorFactory = new ProcessValidatorFactory();\n' +
+                'List<ValidationError> errorLs = validatorFactory.createDefaultProcessValidator().validate(new BpmnModel());'
+                }
+              </SyntaxHighlighter>
               <p style={{textIndent: 30}}>
                 如果errorLs的结果长度为0，则代表校验通过，否则没有校验通过。
               </p>
             </li>
             <li>
-              <b>BpmnModal转换为流程文档</b>
-              <p>BpmnXMLConverter类</p>
+              <b>BpmnModel转换为流程文档</b>
+              <p>BpmnXMLConverter类的转换方法：</p>
+              <SyntaxHighlighter language={'java'} style={monokaiSublime}>
+                {'public byte[] convertToXML(@NotNull BpmnModel model, @NotNull String encoding);'}
+              </SyntaxHighlighter>
+            </li>
+            <li>
+              <b>流程文档转换为BpmnModel</b>
+              <p>BpmnXMLConverter类的转换方法：</p>
+              <SyntaxHighlighter language={'java'} style={monokaiSublime}>
+                {'public BpmnModel convertToBpmnModel(@NotNull XMLStreamReader xtr);'}
+              </SyntaxHighlighter>
             </li>
           </ul>
 

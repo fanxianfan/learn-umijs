@@ -6,11 +6,11 @@ import stylesUtil from '../ActivitiDocument.less';
 /**
  * 工作流：BPMN知识点
  * */
-class ABPMN extends Component {
+class BPMN extends Component {
   render() {
     return (
       <>
-        <blockquote id='ABPMN' className={styles.blockquote}>
+        <blockquote id='BPMN' className={styles.blockquote}>
           BPMN模型，5类基础元素
         </blockquote>
         <ol>
@@ -47,7 +47,7 @@ class ABPMN extends Component {
           </li>
         </ol>
 
-        <blockquote className={styles.blockquote}>BPMN元素的说明</blockquote>
+        <blockquote className={styles.blockquote}>BPMN基本元素的说明</blockquote>
         <ol>
           <li>
             <b>事件（Events）</b>
@@ -55,8 +55,8 @@ class ABPMN extends Component {
             <div className={stylesUtil.circleHollow} />
           </li>
           <li>
-            <b>节点（活动）（Activities）</b>
-            <p>节点是工作流中一个通用的术语，节点包括任务（Task）和 子流程（Sub-Process）。</p>
+            <b>活动（Activities）</b>
+            <p>活动是工作流中一个通用的术语，有生命周期的元素或者节点都称之为“活动”，活动包括任务（Task）节点、子流程（Sub-Process）、引用流程等。</p>
             <div className={stylesUtil.squareHollow} />
           </li>
           <li>
@@ -142,4 +142,4 @@ class ABPMN extends Component {
   }
 }
 
-export default ABPMN;
+export default BPMN;
