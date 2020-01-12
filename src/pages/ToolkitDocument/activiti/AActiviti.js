@@ -23,7 +23,12 @@ class AActiviti extends Component {
         <ol>
           <li>
             <b>下载源码</b>
-            <p>去官网下载，activiti源码包</p>
+            <p>去官网下载，activiti源码包，
+              <a href='https://github.com/Activiti/Activiti/releases?after=7-201712-EA' rel='noopener noreferrer' target='_blank'>https://github.com/Activiti/Activiti</a>
+            </p>
+            <p>查看官方文档，
+              <a href='https://www.activiti.org/userguide' rel='noopener noreferrer' target='_blank'>https://www.activiti.org/userguide/</a>
+            </p>
           </li>
           <li>
             <b>解压并部署</b>

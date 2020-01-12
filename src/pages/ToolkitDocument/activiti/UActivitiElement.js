@@ -70,7 +70,7 @@ class UActivitiElement extends Component {
       key:"scriptTask",
       tag: "<scriptTask>",
       name: "脚本任务",
-      desc: "当流程执行到达脚本任务时，将自动执行相应的脚本。",
+      desc: "当流程执行到达脚本任务时，将自动执行相应的脚本。一般情况都是用JavaScript脚本。",
       entity: "ScriptTask",
       resolver: "ScriptTaskXMLConverter",
       color: "#f7664b",
@@ -79,7 +79,7 @@ class UActivitiElement extends Component {
       key:"serviceTask",
       tag: "<serviceTask>",
       name: "服务任务",
-      desc: "Java服务任务用于调用外部Java类。",
+      desc: "该任务用于调用外部Java类。此类必须实现JavaDelegate接口或ActivityBehavior接口。{此标签添加activiti:type属性后，表示不同的任务类型，其中包括：mail、mule、camel、shell}",
       entity: "ServiceTask",
       resolver: "ServiceTaskXMLConverter",
       color: "#f7664b",
@@ -88,7 +88,7 @@ class UActivitiElement extends Component {
       key:"businessRuleTask",
       tag: "<businessRuleTask>",
       name: "业务规则任务",
-      desc: "用于同步执行一个/多个规则， Activiti使用Drools Expert（Drools规则引擎）执行业务规则",
+      desc: "用于同步执行一个/多个规则， Activiti使用Drools Expert（Drools规则引擎）执行业务规则，其中包含业务规则的.drl文件必须与流程定义一起部署",
       entity: "BusinessRuleTask",
       resolver: "BusinessRuleTaskXMLConverter",
       color: "#f7664b",
@@ -97,7 +97,7 @@ class UActivitiElement extends Component {
       key:"manualTask",
       tag: "<manualTask>",
       name: "手动任务",
-      desc: "一个传递任务",
+      desc: "引擎将此任务作为传递节点处理，手工任务就是一个自动执行的过程。手动任务几乎不在程序中做什么事情，只是在流程的历史中留下一点痕迹，表明流程是走过某些节点的。而且这个任务是无法用taskservice查询到的",
       entity: "ManualTask",
       resolver: "ManualTaskXMLConverter",
       color: "#f7664b",
@@ -106,7 +106,8 @@ class UActivitiElement extends Component {
       key:"receiveTask",
       tag: "<receiveTask>",
       name: "接收任务",
-      desc: "用于等待特定消息的任务到达，当流程执行到达接收任务时，流程状态将提交给持久性存储。此时处于等待状态，直到接收到消息为止。",
+      desc: "用于等待特定消息的任务到达，当流程执行到达接收任务时，流程状态将提交给持久性存储。此时处于等待状态，直到接收到消息为止。\n" +
+        "如何继续？必须使用到达接收任务的执行ID调用runtimeService.signal（executionId）",
       entity: "ReceiveTask",
       resolver: "ReceiveTaskXMLConverter",
       color: "#f7664b",
@@ -127,7 +128,16 @@ class UActivitiElement extends Component {
       desc: "子流程是一个包含其他活动，网关，事件等的活动",
       entity: "SubProcess",
       resolver: "SubprocessXMLConverter",
-      color: "#f7664b",
+      color: "#00bb4f",
+    },
+    {
+      key: "transaction",
+      tag: "<transaction>",
+      name: "事务子流程",
+      desc: "它是一个嵌入式子流程，Activiti以事务方式执行流程。并发使用乐观锁定来解决。它与transaction不同。",
+      entity: "Transaction",
+      resolver: "",
+      color: "#00bb4f",
     },
     {
       key: "callActivity",
@@ -136,8 +146,9 @@ class UActivitiElement extends Component {
       desc: "当流程执行到达调用节点中时，将创建一个新的执行流程，它是到达调用节点的执行的子执行。然后，该子执行用于执行子流程，从而有可能在常规流程中创建并行子执行。父执行程序等待到子过程完全结束，然后再继续原始过程。",
       entity: "CallActivity",
       resolver: "CallActivityXMLConverter",
-      color: "#f7664b",
+      color: "#00bb4f",
     },
+
     {
       key: "exclusiveGateway",
       tag: "<exclusiveGateway>",
@@ -175,6 +186,7 @@ class UActivitiElement extends Component {
       resolver: "EventGatewayXMLConverter",
       color: "#ba00e3",
     }
+
   ];
 
   render() {

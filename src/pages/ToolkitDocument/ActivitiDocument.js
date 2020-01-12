@@ -16,6 +16,9 @@ import EngineTenant from "@/pages/ToolkitDocument/activiti/EngineTenant";
 import UActivitiSimpleProcess from "@/pages/ToolkitDocument/activiti/UActivitiSimpleProcess";
 import UActivitiDeployment from "@/pages/ToolkitDocument/activiti/UActivitiDeployment";
 import UActivitiElement from "@/pages/ToolkitDocument/activiti/UActivitiElement";
+import UActivitiHistory from "@/pages/ToolkitDocument/activiti/UActivitiHistory";
+import UActivitiMail from "@/pages/ToolkitDocument/activiti/UActivitiMail";
+import UActivitiCache from "@/pages/ToolkitDocument/activiti/UActivitiCache";
 
 const { Link } = Anchor;
 
@@ -71,9 +74,12 @@ class ActivitiDocument extends Component {
                <Link href='#@act_evt_log' title='事件日志表(act_evt_log)'/>
              </Link>
              <Link href="#BPMN" title="BPMN规范——业务流程建模标记法"/>
-             <Link href='#UActivitiSimpleProcess' title={<b>使用详解：简单示例</b>}/>
+             <Link href='#UActivitiSimpleProcess' title={<b>简单代码示例</b>}/>
              <Link href='#UActivitiDeployment' title={<b>使用详解：流程部署</b>}/>
              <Link href='#UActivitiElement' title={<b>使用详解：流程文档解析</b>}/>
+             <Link href='#UActivitiHistory' title={'使用详解：历史记录'}/>
+             <Link href='#UActivitiMail' title={'使用详解：邮件配置'}/>
+             <Link href='#UActivitiCache' title={'使用详解：流程缓存'}/>
              <Link href="#CModeOrder" title='Activiti中的命令模式'/>
              <Link href="#CModeChain" title='Activiti中的责任链模式'/>
              <Link href='#EngineTenant' title='Activiti引擎多租户方案'/>
@@ -91,6 +97,9 @@ class ActivitiDocument extends Component {
              <UActivitiSimpleProcess/>
              <UActivitiDeployment/>
              <UActivitiElement/>
+             <UActivitiHistory/>
+             <UActivitiMail/>
+             <UActivitiCache/>
              <CModeOrder/>
              <CModeChain/>
              <EngineTenant/>
