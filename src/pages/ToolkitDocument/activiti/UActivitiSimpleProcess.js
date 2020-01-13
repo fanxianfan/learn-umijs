@@ -186,7 +186,7 @@ class UActivitiSimpleProcess extends Component {
           </SyntaxHighlighter>
 
           <h4 className={styles.headerTitle}>项目配置：导入数据库表/更新数据库表</h4>
-          <p style={{textIndent: 30}}>
+          <p className={styles.textIndent30}>
             方案有两种：运行SQL语句 和 项目配置（项目启动自动校验数据库表）
           </p>
           <ol>

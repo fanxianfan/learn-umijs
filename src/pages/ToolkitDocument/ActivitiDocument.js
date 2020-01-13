@@ -19,6 +19,9 @@ import UActivitiElement from "@/pages/ToolkitDocument/activiti/UActivitiElement"
 import UActivitiHistory from "@/pages/ToolkitDocument/activiti/UActivitiHistory";
 import UActivitiMail from "@/pages/ToolkitDocument/activiti/UActivitiMail";
 import UActivitiCache from "@/pages/ToolkitDocument/activiti/UActivitiCache";
+import UActivitiEvent from "@/pages/ToolkitDocument/activiti/UActivitiEvent";
+import UActivitiService from "@/pages/ToolkitDocument/activiti/UActivitiService";
+import UActivitiException from "@/pages/ToolkitDocument/activiti/UActivitiException";
 
 const { Link } = Anchor;
 
@@ -75,11 +78,14 @@ class ActivitiDocument extends Component {
              </Link>
              <Link href="#BPMN" title="BPMN规范——业务流程建模标记法"/>
              <Link href='#UActivitiSimpleProcess' title={<b>简单代码示例</b>}/>
+             <Link href='#UActivitiService' title={<b>使用详情：引擎服务</b>}/>
              <Link href='#UActivitiDeployment' title={<b>使用详解：流程部署</b>}/>
-             <Link href='#UActivitiElement' title={<b>使用详解：流程文档解析</b>}/>
-             <Link href='#UActivitiHistory' title={'使用详解：历史记录'}/>
-             <Link href='#UActivitiMail' title={'使用详解：邮件配置'}/>
-             <Link href='#UActivitiCache' title={'使用详解：流程缓存'}/>
+             <Link href='#UActivitiElement' title={<b>使用详解：标签元素</b>}/>
+             <Link href='#UActivitiHistory' title={<b>使用详解：历史记录</b>}/>
+             <Link href='#UActivitiMail' title={<b>使用详解：邮件配置</b>}/>
+             <Link href='#UActivitiCache' title={<b>使用详解：流程缓存</b>}/>
+             <Link href='#UActivitiEvent' title={<b>使用详情：流程事件</b>}/>
+             <Link href='#UActivitiException' title={<b>使用详情：异常</b>}/>
              <Link href="#CModeOrder" title='Activiti中的命令模式'/>
              <Link href="#CModeChain" title='Activiti中的责任链模式'/>
              <Link href='#EngineTenant' title='Activiti引擎多租户方案'/>
@@ -96,10 +102,13 @@ class ActivitiDocument extends Component {
              <BPMN/>
              <UActivitiSimpleProcess/>
              <UActivitiDeployment/>
+             <UActivitiService/>
              <UActivitiElement/>
              <UActivitiHistory/>
              <UActivitiMail/>
              <UActivitiCache/>
+             <UActivitiEvent/>
+             <UActivitiException/>
              <CModeOrder/>
              <CModeChain/>
              <EngineTenant/>

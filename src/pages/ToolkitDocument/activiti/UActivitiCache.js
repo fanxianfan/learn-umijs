@@ -12,7 +12,7 @@ class UActivitiCache extends Component {
     return (
       <>
         <blockquote id='UActivitiCache' className={styles.blockquote}>使用详解：Activiti的缓存</blockquote>
-        <p style={{textIndent: 30}}>
+        <p className={styles.textIndent30}>
           所有流程定义都会在解析之后进行缓存，以避免每次需要流程定义时都访问数据库。（因为流程定义数据不会更改）
         </p>
         <br/>

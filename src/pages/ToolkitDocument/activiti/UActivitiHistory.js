@@ -13,10 +13,10 @@ class UActivitiHistory extends Component {
     return (
       <>
         <blockquote id='UActivitiHistory' className={styles.blockquote}>使用详解：Activiti的历史记录</blockquote>
-        <p style={{textIndent: 30}}>
+        <p className={styles.textIndent30}>
           历史记录是捕获流程执行过程中发生的事情并将其永久存储的组件。与运行时数据相比，历史数据将在流程实例完成后仍保留在DB中。
         </p>
-
+        <br/>
         <h4 className={styles.headerTitle}>5个承载历史记录的<b>实体类</b></h4>
         <ul className={styles.childM10}>
           <li><Tag color={'volcano'}>HistoricProcessInstance</Tag> 接口，包含有关当前和过去流程实例的信息。</li>

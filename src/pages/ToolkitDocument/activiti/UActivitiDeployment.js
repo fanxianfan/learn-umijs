@@ -35,7 +35,7 @@ class UActivitiDeployment extends Component {
           <SyntaxHighlighter language='java' style={monokaiSublime}>
             {'DeploymentBuilder deploymentBuilder = this.repositoryService.createDeployment();'}
           </SyntaxHighlighter>
-          <p style={{textIndent: 30, marginTop: 10}}>
+          <p className={`${styles.textIndent30} ${styles.mt10}`}>
             DeploymentBuilder类是部署流程的核心类，通过核心类可以对流程进行部署，其中repositoryService是通过ProcessEngine对象获取，其中ProcessEngine是通过流程引擎配置对象获取。
           </p>
           <ol>
@@ -82,7 +82,7 @@ class UActivitiDeployment extends Component {
               </SyntaxHighlighter>
             </li>
           </ol>
-          <p style={{textIndent: 30}}>
+          <p className={styles.textIndent30}>
             最后部署流程使用方法：<code><b>deploymentBuilder.deploy()</b></code>完成部署；
           </p>
 
@@ -90,13 +90,13 @@ class UActivitiDeployment extends Component {
           <ul>
             <li>
               <b>构造BpmnModel</b>
-              <p style={{textIndent: 30}}>
+              <p className={styles.textIndent30}>
                 BpmnModel是通过java类来构造流程，activiti提供了每个元素的实体类，可以直接实例化并组合构成流程实例。
               </p>
             </li>
             <li>
               <b>校验BpmnModel</b>
-              <p style={{textIndent: 30}}>
+              <p className={styles.textIndent30}>
                 Activiti提供了校验BpmnModel实例对象的类ProcessValidatorFactory，确保实例对象转换之后的XML格式是正确的。
                 代码如下：
               </p>
@@ -106,7 +106,7 @@ class UActivitiDeployment extends Component {
                 'List<ValidationError> errorLs = validatorFactory.createDefaultProcessValidator().validate(new BpmnModel());'
                 }
               </SyntaxHighlighter>
-              <p style={{textIndent: 30}}>
+              <p className={styles.textIndent30}>
                 如果errorLs的结果长度为0，则代表校验通过，否则没有校验通过。
               </p>
             </li>
