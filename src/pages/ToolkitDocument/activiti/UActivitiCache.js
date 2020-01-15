@@ -15,22 +15,26 @@ class UActivitiCache extends Component {
         <p className={styles.textIndent30}>
           所有流程定义都会在解析之后进行缓存，以避免每次需要流程定义时都访问数据库。（因为流程定义数据不会更改）
         </p>
-        <br/>
-        <h4 className={styles.headerTitle}>代码配置缓存：设置缓存个数</h4>
-        <SyntaxHighlighter language={'java'} style={monokai}>
-          {
-            '//设置此属性会将默认哈希映射缓存，并且使用LRU（选择最久未使用的页面予以淘汰）置换算法更新缓存;\n' +
-            '//配置缓存个数为100;\n' +
-            'configuration.setProcessDefinitionCacheLimit(100);'
-          }
-        </SyntaxHighlighter>
-        <br/>
-        <h4 className={styles.headerTitle}>代码配置缓存：自定义缓存实现</h4>
-        <SyntaxHighlighter language={'java'} style={monokai}>
-          {
-            'public ProcessEngineConfigurationImpl setProcessDefinitionCache(DeploymentCache<ProcessDefinitionCacheEntry> processDefinitionCache)'
-          }
-        </SyntaxHighlighter>
+        <ul>
+          <li>
+            <h4 className={styles.headerTitle}>代码配置缓存：设置缓存个数</h4>
+            <SyntaxHighlighter language={'java'} style={monokai}>
+              {
+                '//设置此属性会将默认哈希映射缓存，并且使用LRU（选择最久未使用的页面予以淘汰）置换算法更新缓存;\n' +
+                '//配置缓存个数为100;\n' +
+                'configuration.setProcessDefinitionCacheLimit(100);'
+              }
+            </SyntaxHighlighter>
+          </li>
+          <li>
+            <h4 className={styles.headerTitle}>代码配置缓存：自定义缓存实现</h4>
+            <SyntaxHighlighter language={'java'} style={monokai}>
+              {
+                'public ProcessEngineConfigurationImpl setProcessDefinitionCache(DeploymentCache<ProcessDefinitionCacheEntry> processDefinitionCache)'
+              }
+            </SyntaxHighlighter>
+          </li>
+        </ul>
       </>
     );
   }

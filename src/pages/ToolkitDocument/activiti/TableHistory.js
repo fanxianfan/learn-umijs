@@ -217,7 +217,7 @@ class TableHistory extends Component {
               <li><b>DATA_：</b>日志数据</li>
               <li><b>LOCK_OWNER_：</b>锁的拥有者</li>
               <li><b>LOCK_TIME_：</b>锁定时间</li>
-              <li><b>IS_PROCESSE：</b></li>
+              <li><b>IS_PROCESSE：</b>是否为流程</li>
             </ol>
           </li>
         </ul>

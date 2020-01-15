@@ -76,7 +76,6 @@ class ActivitiDocument extends Component {
                <Link href='#@act_hi_comment' title='评论表(act_hi_comment)'/>
                <Link href='#@act_evt_log' title='事件日志表(act_evt_log)'/>
              </Link>
-             <Link href="#BPMN" title="BPMN规范——业务流程建模标记法"/>
              <Link href='#UActivitiSimpleProcess' title={<b>简单代码示例</b>}/>
              <Link href='#UActivitiService' title={<b>使用详情：引擎服务</b>}/>
              <Link href='#UActivitiDeployment' title={<b>使用详解：流程部署</b>}/>
@@ -86,6 +85,7 @@ class ActivitiDocument extends Component {
              <Link href='#UActivitiCache' title={<b>使用详解：流程缓存</b>}/>
              <Link href='#UActivitiEvent' title={<b>使用详情：流程事件</b>}/>
              <Link href='#UActivitiException' title={<b>使用详情：异常</b>}/>
+             <Link href="#BPMN" title="BPMN规范——业务流程建模标记法"/>
              <Link href="#CModeOrder" title='Activiti中的命令模式'/>
              <Link href="#CModeChain" title='Activiti中的责任链模式'/>
              <Link href='#EngineTenant' title='Activiti引擎多租户方案'/>
@@ -99,16 +99,16 @@ class ActivitiDocument extends Component {
              <TableIdentity/>
              <TableRuntime/>
              <TableHistory/>
-             <BPMN/>
              <UActivitiSimpleProcess/>
-             <UActivitiDeployment/>
              <UActivitiService/>
+             <UActivitiDeployment/>
              <UActivitiElement/>
              <UActivitiHistory/>
              <UActivitiMail/>
              <UActivitiCache/>
              <UActivitiEvent/>
              <UActivitiException/>
+             <BPMN/>
              <CModeOrder/>
              <CModeChain/>
              <EngineTenant/>

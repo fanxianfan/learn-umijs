@@ -52,18 +52,16 @@ class UActivitiSimpleProcess extends Component {
   /**
    * 请求流程部署API
    * */
-  eventClickApiCreate = () => {
+  eventClickCreateProcess = () => {
     const {dispatch} = this.props;
     dispatch({
       type: 'activitiModel/deploy',
-      payload: {
-        callback: (res) => {
-          if (res.hasOwnProperty('status')) {
-            if (res.status === 0) {
-              notification.success({message: "流程部署成功"})
-            } else {
-              notification.error({message: res.message})
-            }
+      callback: (res) => {
+        if (res.hasOwnProperty('status')) {
+          if (res.status === 0) {
+            notification.success({message: "流程部署成功"})
+          } else {
+            notification.error({message: res.message})
           }
         }
       }
@@ -77,14 +75,50 @@ class UActivitiSimpleProcess extends Component {
     const {dispatch} = this.props;
     dispatch({
       type: 'activitiModel/startProcess',
-      payload: {
-        callback: (res) => {
-          if (res.hasOwnProperty('status')) {
-            if (res.status === 0) {
-              notification.success({message: "流程开启成功"})
-            } else {
-              notification.error({message: res.message})
-            }
+      callback: (res) => {
+        if (res.hasOwnProperty('status')) {
+          if (res.status === 0) {
+            notification.success({message: "流程开启成功"})
+          } else {
+            notification.error({message: res.message})
+          }
+        }
+      }
+    });
+  };
+
+  /**
+   * 暂停工作流API
+   * */
+  eventClickSuspendProcess = () => {
+    const {dispatch} = this.props;
+    dispatch({
+      type: 'activitiModel/suspendProcess',
+      callback: (res) => {
+        if (res.hasOwnProperty('status')) {
+          if (res.status === 0) {
+            notification.success({message: "流程暂停成功"})
+          } else {
+            notification.error({message: res.message})
+          }
+        }
+      }
+    });
+  };
+
+  /**
+   * 请求激活流程API
+   * */
+  eventClickActivateProcess = () => {
+    const {dispatch} = this.props;
+    dispatch({
+      type: 'activitiModel/activateProcess',
+      callback: (res) => {
+        if (res.hasOwnProperty('status')) {
+          if (res.status === 0) {
+            notification.success({message: "流程激活成功"})
+          } else {
+            notification.error({message: res.message})
           }
         }
       }
@@ -129,6 +163,25 @@ class UActivitiSimpleProcess extends Component {
           this.handleModalHide();
         } else {
           notification.error({message: "任务完成失败"});
+        }
+      }
+    });
+  };
+
+  /**
+   * SQL查询工作流信息
+   * */
+  eventClickSqlQuery = () => {
+    const {dispatch} = this.props;
+    dispatch({
+      type: 'activitiModel/sqlQuery',
+      callback: (res) => {
+        if (res.hasOwnProperty('status')) {
+          if (res.status === 0) {
+            notification.success({message: JSON.stringify(res.data)})
+          } else {
+            notification.error({message: res.message})
+          }
         }
       }
     });
@@ -289,8 +342,9 @@ class UActivitiSimpleProcess extends Component {
           </SyntaxHighlighter>
           <img alt={"示例流程图"} src={exampleImg} width={200} height={'auto'}/>
 
+          {/*-------------------------------------------------------------------------------*/}
           <h4 className={styles.headerTitle}>编写代码：部署流程</h4>
-          <Button loading={this.props.loading} type='primary' onClick={this.eventClickApiCreate}>
+          <Button loading={this.props.loading} type='primary' onClick={this.eventClickCreateProcess}>
             请求API（部署一个已经配置好的流程）
           </Button>
           <p>数据库对应变化：</p>
@@ -299,7 +353,7 @@ class UActivitiSimpleProcess extends Component {
             <li>act_re_deployment，流程部署表添加1条记录</li>
             <li>act_re_procdef，流程定义表添加1条记录</li>
           </ul>
-
+          {/*-------------------------------------------------------------------------------*/}
           <h4 className={styles.headerTitle}>编写代码：启动工作流</h4>
           <Button loading={this.props.loading} type='primary' onClick={this.eventClickStartProcess}>
             请求API（发起工作流，并配置第一个节点的员工）
@@ -316,18 +370,17 @@ class UActivitiSimpleProcess extends Component {
             <li>act_ru_task，用户任务表，添加1条记录</li>
             <li>act_ru_variable，运行时变量表，添加1条记录</li>
           </ul>
-
+          {/*-------------------------------------------------------------------------------*/}
           <h4 className={styles.headerTitle}>编写代码：查看“员工”待处理的任务，并提交申请</h4>
           <Button type='primary'
                   loading={this.props.loading}
-                  style={{marginBottom: 20}}
                   onClick={() => {
                     this.eventClickTaskQuery('jonas')
                   }}
           >
             请求API（获取员工待处理的任务）
           </Button>
-
+          {/*-------------------------------------------------------------------------------*/}
           <h4 className={styles.headerTitle}>编写代码：查看“领导”待处理的任务，并通过审核</h4>
           <Button loading={this.props.loading} type={"primary"} onClick={() => {
             this.eventClickTaskQuery('kevin')
@@ -341,7 +394,30 @@ class UActivitiSimpleProcess extends Component {
             <li>act_hi_taskinst,历史任务表，修改1条记录（添加结束时间...）</li>
             <li>act_ru_task,用户任务表，删除1条记录</li>
           </ul>
+          {/*-------------------------------------------------------------------------------*/}
+          <h4 className={styles.headerTitle}>编写代码：暂停流程</h4>
+          <Button loading={this.props.loading} type='primary' onClick={this.eventClickSuspendProcess}>
+            请求API（暂停工作流）
+          </Button>
+          <p className={styles.textIndent30}>
+            暂停流程定义后，将无法创建新的流程实例（将引发异常）。
+          </p>
+          {/*-------------------------------------------------------------------------------*/}
+          <h4 className={styles.headerTitle}>编写代码：激活流程</h4>
+          <Button loading={this.props.loading} type='primary' onClick={this.eventClickActivateProcess}>
+            请求API（激活流程）
+          </Button>
+          <p className={styles.textIndent30}>
+            也可以暂停流程实例。暂停后，该过程将无法继续执行（例如，完成任务会引发异常），并且不会执行任何作业（例如计时器）。可以通过调用runtimeService.suspendProcessInstance方法来挂起流程实例。
+            通过调用runtimeService.activateProcessInstanceXXX方法来再次激活流程实例。
+          </p>
+          {/*-------------------------------------------------------------------------------*/}
+          <h4 className={styles.headerTitle}>编写代码：查看“SQL”查询结果</h4>
+          <Button loading={this.props.loading} type={"primary"} onClick={this.eventClickSqlQuery}>
+            查看“SQL”查询结果
+          </Button>
         </div>
+        <br/>
       </>
     );
   }

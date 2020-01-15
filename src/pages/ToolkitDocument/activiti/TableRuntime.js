@@ -100,16 +100,16 @@ class TableRuntime extends Component {
               <li><b>ID_：</b>主键</li>
               <li><b>REV_：</b>数据版本</li>
               <li><b>TYPE_：</b>工作类型</li>
-              <li><b>EXCLUSIVE_：</b></li>
-              <li><b>EXECUTION_ID_：</b></li>
-              <li><b>PROCESS_INSTANCE_ID_：</b></li>
+              <li><b>EXCLUSIVE_：</b>工作是否需要单独执行</li>
+              <li><b>EXECUTION_ID_：</b>关联流程的执行ID</li>
+              <li><b>PROCESS_INSTANCE_ID_：</b>关联流程的实例ID</li>
               <li><b>PROC_DEF_ID_：</b>关联流程定义ID</li>
               <li><b>EXCEPTION_STACK_ID_：</b>异常堆栈信息，关联资源ID</li>
               <li><b>EXCEPTION_MSG_：</b>异常信息描述</li>
               <li><b>DUEDATE_：</b>工作执行时间</li>
-              <li><b>REPEAT_：</b></li>
-              <li><b>HANDLER_TYPE_：</b></li>
-              <li><b>HANDLER_CFG_：</b></li>
+              <li><b>REPEAT_：</b>工作重复执行的次数</li>
+              <li><b>HANDLER_TYPE_：</b>标识工作的处理类型</li>
+              <li><b>HANDLER_CFG_：</b>工作的相关配置信息</li>
               <li><b>TENANT_ID_：</b>租户ID</li>
             </ol>
           </li>

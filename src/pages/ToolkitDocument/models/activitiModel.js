@@ -1,4 +1,4 @@
-import {deploy, startProcess, taskQuery, complete} from "../services/activitiService";
+import {deploy, startProcess, taskQuery, complete, suspendProcess, activateProcess, sqlQuery} from "../services/activitiService";
 
 export default {
 
@@ -9,17 +9,31 @@ export default {
   },
 
   effects: {
-    *deploy({payload}, {call}) {
-      const response = yield call(deploy, payload);
-      if (payload.hasOwnProperty('callback') && typeof payload.callback === 'function') {
-        payload.callback(response);
+    *deploy({callback}, {call}) {
+      const response = yield call(deploy);
+      if (typeof callback === 'function') {
+        callback(response);
       }
     },
 
-    *startProcess({payload}, {call}) {
-      const response = yield call(startProcess, payload);
-      if (payload.hasOwnProperty('callback') && typeof payload.callback === 'function') {
-        payload.callback(response);
+    *startProcess({callback}, {call}) {
+      const response = yield call(startProcess);
+      if (typeof callback === 'function') {
+        callback(response);
+      }
+    },
+
+    *suspendProcess({callback}, {call}) {
+      const response = yield call(suspendProcess);
+      if (typeof callback === 'function') {
+        callback(response);
+      }
+    },
+
+    *activateProcess({callback}, {call}) {
+      const response = yield call(activateProcess);
+      if (typeof callback === 'function') {
+        callback(response);
       }
     },
 
@@ -32,6 +46,13 @@ export default {
 
     *complete({payload, callback}, {call}) {
       const response = yield call(complete, payload);
+      if (typeof callback === 'function') {
+        callback(response);
+      }
+    },
+
+    *sqlQuery({callback}, {call}) {
+      const response = yield call(sqlQuery);
       if (typeof callback === 'function') {
         callback(response);
       }

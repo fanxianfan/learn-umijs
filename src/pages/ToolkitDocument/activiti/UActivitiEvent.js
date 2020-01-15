@@ -210,108 +210,120 @@ class UActivitiEvent extends Component {
         <blockquote id='UActivitiEvent' className={styles.blockquote}>
           使用详解：事件
         </blockquote>
-
-        <h4 className={styles.headerTitle}>监听器必须实现的接口</h4>
-        <p className={styles.textIndent30}>
-          事件侦听器具有的唯一要求是实现org.activiti.engine.delegate.event.ActivitiEventListener。
-        </p>
-        <p className={styles.textIndent30}>
-          如果分派事件时<b>onEvent（..）</b>方法发生异常，则isFailOnException（）方法将确定异常行为。
-          如果返回<b>false</b>，则忽略该异常。当返回<b>true</b>时，异常将不被忽略并冒泡，从而有效地使当前正在进行的命令失败。
-          如果该事件是API调用（或任何其他事务性操作，例如作业执行）的一部分，则事务将回滚。
-          如果事件监听器中的行为不是关键业务，建议返回false。
-        </p>
-        <p className={styles.textIndent30}>
-          Activiti已经提供一个基础事件监听器类<b>org.activiti.engine.delegate.event.BaseEntityEventListener</b>
-        </p>
-        <SyntaxHighlighter language={'java'} style={monokai}>
-          {
-            'public class EventDefinedListener implements ActivitiEventListener {\n' +
-            '\n' +
-            '    @Override\n' +
-            '    public void onEvent(ActivitiEvent activitiEvent) {\n' +
-            '    }\n' +
-            '    @Override\n' +
-            '    public boolean isFailOnException() {\n' +
-            '        return false;\n' +
-            '    }\n' +
-            '}'
-          }
-        </SyntaxHighlighter>
-
-
-        <h4 className={styles.headerTitle}>项目配置时期：添加事件监听器</h4>
-        <p className={styles.textIndent30}>
-          项目配置阶段可以直接配置多个<b>流程事件监听器</b>，代码如下。
-          调度事件的顺序取决于监听器的添加顺序。
-        </p>
-        <SyntaxHighlighter language={'java'} style={monokai}>
-          {
-            'public ProcessEngineConfigurationImpl setEventListeners(java.util.List<ActivitiEventListener> eventListeners)'
-          }
-        </SyntaxHighlighter>
-
-        <h4 className={styles.headerTitle}>流程运行时期：添加事件监听器</h4>
-        <p className={styles.textIndent30}>
-          RuntimeService的API提供了事件监听器的操作。请注意：重新启动引擎后，在运行时添加的侦听器不会被保留。
-        </p>
-        <SyntaxHighlighter language={'java'} style={monokai}>
-          {
-            ' public abstract void addEventListener(ActivitiEventListener activitiEventListener)\n' +
-            ' public abstract void addEventListener(ActivitiEventListener activitiEventListener,ActivitiEventType... activitiEventTypes)\n' +
-            ' public abstract void removeEventListener(ActivitiEventListener activitiEventListener)\n'
-          }
-        </SyntaxHighlighter>
-
-        <h4 className={styles.headerTitle}>流程定义时期：添加事件监听器</h4>
         <ul>
-          下面是定义示例描述：
-          <li>1）定义了2个监听器。</li>
-          <li>2）第一个监听器指定了自己的实现类，并且接收任何类型的事件。</li>
-          <li>2）第二个监听器只接收执行成功 || 执行失败的事件，并由配置的bean来处理。</li>
+          {/*------------------------------------------------------------------------------*/}
+          <li>
+            <h4 className={styles.headerTitle}>监听器必须实现的接口</h4>
+            <p className={styles.textIndent30}>
+              事件侦听器具有的唯一要求是实现<b>org.activiti.engine.delegate.event.ActivitiEventListener</b>
+            </p>
+            <p className={styles.textIndent30}>
+              如果分派事件时<b>onEvent（..）</b>方法发生异常，则isFailOnException（）方法将确定异常行为。
+              如果返回<b>false</b>，则忽略该异常。当返回<b>true</b>时，异常将不被忽略并冒泡，从而有效地使当前正在进行的命令失败。
+              如果该事件是API调用（或任何其他事务性操作，例如作业执行）的一部分，则事务将回滚。
+              如果事件监听器中的行为不是关键业务，建议返回false。
+            </p>
+            <p className={styles.textIndent30}>
+              Activiti已经提供一个基础事件监听器类<b>org.activiti.engine.delegate.event.BaseEntityEventListener</b>
+            </p>
+            <SyntaxHighlighter language={'java'} style={monokai}>
+              {
+                'public class EventDefinedListener implements ActivitiEventListener {\n' +
+                '\n' +
+                '    @Override\n' +
+                '    public void onEvent(ActivitiEvent activitiEvent) {\n' +
+                '    }\n' +
+                '    @Override\n' +
+                '    public boolean isFailOnException() {\n' +
+                '        return false;\n' +
+                '    }\n' +
+                '}'
+              }
+            </SyntaxHighlighter>
+          </li>
+          {/*------------------------------------------------------------------------------*/}
+          <li>
+            <h4 className={styles.headerTitle}>项目配置时期：添加事件监听器</h4>
+            <p className={styles.textIndent30}>
+              项目配置阶段可以直接配置多个<b>流程事件监听器</b>，代码如下。
+              调度事件的顺序取决于监听器的添加顺序。
+            </p>
+            <SyntaxHighlighter language={'java'} style={monokai}>
+              {
+                'public ProcessEngineConfigurationImpl setEventListeners(java.util.List<ActivitiEventListener> eventListeners)'
+              }
+            </SyntaxHighlighter>
+          </li>
+          {/*------------------------------------------------------------------------------*/}
+          <li>
+            <h4 className={styles.headerTitle}>流程运行时期：添加事件监听器</h4>
+            <p className={styles.textIndent30}>
+              RuntimeService的API提供了事件监听器的操作。请注意：重新启动引擎后，在运行时添加的侦听器不会被保留。
+            </p>
+            <SyntaxHighlighter language={'java'} style={monokai}>
+              {
+                ' public abstract void addEventListener(ActivitiEventListener activitiEventListener)\n' +
+                ' public abstract void addEventListener(ActivitiEventListener activitiEventListener,ActivitiEventType... activitiEventTypes)\n' +
+                ' public abstract void removeEventListener(ActivitiEventListener activitiEventListener)\n'
+              }
+            </SyntaxHighlighter>
+          </li>
+          {/*------------------------------------------------------------------------------*/}
+          <li>
+            <h4 className={styles.headerTitle}>流程定义时期：添加事件监听器</h4>
+            <ul>
+              下面是定义示例描述：
+              <li>1）定义了2个监听器。</li>
+              <li>2）第一个监听器指定了自己的实现类，并且接收任何类型的事件。</li>
+              <li>2）第二个监听器只接收执行成功 || 执行失败的事件，并由配置的bean来处理。</li>
+            </ul>
+            <SyntaxHighlighter language={'xml'} style={monokai}>
+              {
+                '<process id="testEventListeners">\n' +
+                '  <extensionElements>\n' +
+                '    <activiti:eventListener class="org.activiti.engine.test.MyEventListener" />\n' +
+                '    <activiti:eventListener delegateExpression="${testEventListener}" events="JOB_EXECUTION_SUCCESS,JOB_EXECUTION_FAILURE" />\n' +
+                '  </extensionElements>\n' +
+                '  ...\n' +
+                '</process>'
+              }
+            </SyntaxHighlighter>
+            <b>定义监听器的注意事项：</b>
+            <ol className={styles.childM5}>
+              <li>
+                事件侦听器只能在<b>{'<process>'}</b>元素上声明，作为<b>{'<extensionElements>'}</b>的子元素。
+              </li>
+              <li>
+                与其他表达式（例如在网关中）一样，在委托表达式中使用的表达式无法访问执行上下文。
+                它们只能引用在流程引擎配置的<b>bean</b>属性中定义的<b>bean</b>，或者在使用<b>spring</b>（并且不存在bean属性）时引用实现了侦听器接口的任何<b>spring-bean</b>。
+              </li>
+              <li>
+                使用侦听器的class属性时，只会创建该类的单个实例。目的是确保从多个线程/上下文安全使用。
+              </li>
+              <li>
+                如果在<b>events</b>属性中使用了非法的事件类型或使用了非法的<b>throwEvent</b>值，则在部署流程定义时将引发异常。
+                如果提供了非法的<b>class</b>或委托执行的非法值（如不存在的类，不存在的<b>bean</b>引用或未实现侦听器接口的委托），则在进程启动时引发异常。
+                要确保所引用的类在类路径上，并且表达式解析为有效实例。
+              </li>
+            </ol>
+          </li>
+          {/*------------------------------------------------------------------------------*/}
+          <li>
+            <h4 className={styles.headerTitle}>主动分发事件</h4>
+            <p>
+              我们通过API开放了事件分发机制，以允许您将自定义事件分发给在引擎中注册的所有侦听器。调用类为RuntimeService。
+            </p>
+            <SyntaxHighlighter language={'java'} style={monokai}>
+              {'public abstract void dispatchEvent(ActivitiEvent activitiEvent)'}
+            </SyntaxHighlighter>
+          </li>
+          {/*------------------------------------------------------------------------------*/}
+          <li>
+            <h4 className={styles.headerTitle}>所有事件类型枚举</h4>
+            <p>枚举类<b>org.activiti.engine.delegate.event.ActivitiEventType</b></p>
+            <Table bordered={true} columns={columns} dataSource={dataSource}/>
+          </li>
         </ul>
-        <SyntaxHighlighter language={'xml'} style={monokai}>
-          {
-            '<process id="testEventListeners">\n' +
-            '  <extensionElements>\n' +
-            '    <activiti:eventListener class="org.activiti.engine.test.MyEventListener" />\n' +
-            '    <activiti:eventListener delegateExpression="${testEventListener}" events="JOB_EXECUTION_SUCCESS,JOB_EXECUTION_FAILURE" />\n' +
-            '  </extensionElements>\n' +
-            '  ...\n' +
-            '</process>'
-          }
-        </SyntaxHighlighter>
-        <b>定义监听器的注意事项：</b>
-        <ol className={styles.childM5}>
-          <li>
-            事件侦听器只能在<b>{'<process>'}</b>元素上声明，作为<b>{'<extensionElements>'}</b>的子元素。
-          </li>
-          <li>
-            与其他表达式（例如在网关中）一样，在委托表达式中使用的表达式无法访问执行上下文。
-            它们只能引用在流程引擎配置的<b>bean</b>属性中定义的<b>bean</b>，或者在使用<b>spring</b>（并且不存在bean属性）时引用实现了侦听器接口的任何<b>spring-bean</b>。
-          </li>
-          <li>
-            使用侦听器的class属性时，只会创建该类的单个实例。目的是确保从多个线程/上下文安全使用。
-          </li>
-          <li>
-            如果在<b>events</b>属性中使用了非法的事件类型或使用了非法的<b>throwEvent</b>值，则在部署流程定义时将引发异常。
-            如果提供了非法的<b>class</b>或委托执行的非法值（如不存在的类，不存在的<b>bean</b>引用或未实现侦听器接口的委托），则在进程启动时引发异常。
-            要确保所引用的类在类路径上，并且表达式解析为有效实例。
-          </li>
-        </ol>
-
-        <h4 className={styles.headerTitle}>主动分发事件</h4>
-        <p>
-          我们通过API开放了事件分发机制，以允许您将自定义事件分发给在引擎中注册的所有侦听器。调用类为RuntimeService。
-        </p>
-        <SyntaxHighlighter language={'java'} style={monokai}>
-          {'public abstract void dispatchEvent(ActivitiEvent activitiEvent)'}
-        </SyntaxHighlighter>
-
-        <h4 className={styles.headerTitle}>所有事件类型枚举</h4>
-        <p>枚举类<b>org.activiti.engine.delegate.event.ActivitiEventType</b></p>
-        <Table bordered={true} columns={columns} dataSource={dataSource}/>
-
       </>
     );
   }
