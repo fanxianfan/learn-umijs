@@ -18,21 +18,6 @@ export default [
     path: '/500',
     component: './Error/Error500'
   },
-  /*用户路由（登录 | 注册）*/
-  {
-    path: '/user', //请求路径
-    component: './User/UserLogin', //组件加载路径，相对于src/pages目录
-    routes: [ //子组件
-      {//登录页
-        path: '/user/login',
-        component: './User/UserLogin'
-      },
-      {//注册页
-        path: '/user/register',
-        component: './User/UserRegister',
-      }
-    ]
-  },
   /*应用路由*/
   {
     path: '/', //请求路径
@@ -68,49 +53,6 @@ export default [
             name: '活动编辑',
             component: './Activity/ActivityEdit',
             hidden: true
-          }
-        ]
-      },
-      /*系统管理*/
-      {
-        path: '/system',
-        name: '系统管理',
-        icon: 'setting',
-        routes: [
-          //系统权限管理
-          {
-            path: '/system/auth',
-            name: '系统权限管理',
-            icon: 'safety-certificate',
-            component: './SystemAuth/SystemAuthPaging',
-          },
-          //系统菜单管理
-          {
-            path: '/system/menu',
-            name: '系统菜单管理',
-            icon: 'menu',
-            component: './SystemMenu/SystemMenuPaging',
-          },
-          //系统角色管理
-          {
-            path: '/system/role',
-            name: '系统角色管理',
-            icon: 'team',
-            component: './SystemRole/SystemRolePaging',
-          },
-          //系统用户管理
-          {
-            path: '/system/user',
-            name: '系统用户管理',
-            icon: 'user',
-            component: './SystemUser/SystemUserPaging',
-          },
-          //系统任务调度
-          {
-            path: '/system/task',
-            name: '系统任务调度',
-            icon: 'history',
-            component: './SystemTask/SystemTaskPaging',
           }
         ]
       },

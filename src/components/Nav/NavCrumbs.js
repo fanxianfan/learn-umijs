@@ -19,7 +19,14 @@ class NavCrumbs extends Component {
         this.itemArray.push({
           parent: route.parent,
           key: route.key,
-          element: (<Breadcrumb.Item key={route.key}><Link to={route.path}>{route.name}</Link></Breadcrumb.Item>)
+          element: (
+            <Breadcrumb.Item key={route.key}>
+              {route.hasComponent
+                ? <Link to={route.path}>{route.name}</Link>
+                : <span>{route.name}</span>
+              }
+            </Breadcrumb.Item>
+          )
         });
         break;
       }
@@ -36,7 +43,14 @@ class NavCrumbs extends Component {
         this.itemArray.unshift({
           parent: route.parent,
           key: route.key,
-          element: (<Breadcrumb.Item key={route.key}><Link to={route.path}>{route.name}</Link></Breadcrumb.Item>)
+          element: (
+            <Breadcrumb.Item key={route.key}>
+              {route.hasComponent
+                ? <Link to={route.path}>{route.name}</Link>
+                : <span>{route.name}</span>
+              }
+            </Breadcrumb.Item>
+          )
         });
         this.iteration();
         break;

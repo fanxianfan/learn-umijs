@@ -2,8 +2,12 @@ import React, {Component} from 'react';
 import {
   Layout,
   Icon,
+  Row,
+  Col,
   ConfigProvider,
-  BackTop
+  BackTop,
+  Dropdown,
+  Menu, Button
 } from 'antd';
 import {uniqueID} from '@/utils/common';
 import styles from './BasicLayout.less';
@@ -55,13 +59,32 @@ class BasicLayout extends Component {
             <Layout className={`${styles.basicBodyLayout} ${this.state.collapsed ? styles.toggle : ''}`}>
               {/*主体头部*/}
               <Header className={styles.basicBodyHeader}>
-              <span>
-              <Icon
-                className={styles.basicBodyHeaderTrigger}
-                type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-                onClick={this.handleToggle}
-              />
-              </span>
+                <Row>
+                  <Col span={2}>
+                    <Icon
+                      className={styles.basicBodyHeaderTrigger}
+                      type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+                      onClick={this.handleToggle}
+                    />
+                  </Col>
+                  <Col span={10} />
+                  <Col span={12}>
+                    <ul style={{float: 'right', listStyle: 'none', marginRight: 10}}>
+                      <li>
+                        <Dropdown
+                          overlay={
+                            <Menu>
+                              <Menu.Item key="1"><Icon type="crown" />个人中心</Menu.Item>
+                              <Menu.Item key="2"><Icon type="logout" />退出登录</Menu.Item>
+                            </Menu>
+                          }
+                        >
+                          <Button>个人用户</Button>
+                        </Dropdown>
+                      </li>
+                    </ul>
+                  </Col>
+                </Row>
               </Header>
               {/*主体中心*/}
               <Content id={uniqueID} className={styles.basicBodyContent}>
