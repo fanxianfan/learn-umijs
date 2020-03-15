@@ -3,28 +3,28 @@ import {request, getReqFormBody} from '@/utils/request';
 
 /**部署流程*/
 export async function deploy() {
-  return request('http://localhost:10010/api/activiti/deploy', {
+  return request('http://localhost:8080/act/applyProcess', {
     credentials: 'omit',
   });
 }
 
 /**开启流程*/
 export async function startProcess() {
-  return request('http://localhost:10010/api/activiti/startProcess', {
+  return request('http://localhost:8080/act/startInstance/staff_jack', {
     credentials: 'omit',
   });
 }
 
 /**暂停流程*/
 export async function suspendProcess(){
-  return request('http://localhost:10010/api/activiti/suspendProcess', {
+  return request('http://localhost:8080/api/activiti/suspendProcess', {
     credentials: 'omit',
   });
 }
 
 /**激活流程*/
 export async function activateProcess() {
-  return request('http://localhost:10010/api/activiti/activateProcess', {
+  return request('http://localhost:8080/api/activiti/activateProcess', {
     credentials: 'omit',
   });
 }
